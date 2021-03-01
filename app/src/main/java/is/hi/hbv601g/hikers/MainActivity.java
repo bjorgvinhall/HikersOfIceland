@@ -30,31 +30,39 @@ public class MainActivity extends AppCompatActivity{
     private TextView mTextViewResult;
     private static final String TAG = "MainActivity";
 
-    OkHttpClient client = new OkHttpClient();
-
-    String run(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mTextViewResult = findViewById(R.id.text_view_result);
 
+        String url = "http:localhost:8081/rest/hikes";
         // https:reqres.in/api/users?page2
-        try {
-            String asd = run("http:localhost:8081/rest/hikes");
-            Log.d(TAG, asd);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // http:localhost:8081/rest/hikes
+
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+
+                    MainActivity.this.runOnUiThread(() -> mTextViewResult.setText(myResponse));
+                }
+            }
+        });
+
 
     }
 }
