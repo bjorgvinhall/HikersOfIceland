@@ -30,19 +30,6 @@ public class MainActivity extends AppCompatActivity{
     private TextView mTextViewResult;
     private static final String TAG = "MainActivity";
 
-    OkHttpClient client = new OkHttpClient();
-
-    String run(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -50,22 +37,39 @@ public class MainActivity extends AppCompatActivity{
 
         mTextViewResult = findViewById(R.id.text_view_result);
 
-        String url = "http:localhost:8081/rest/hikes";
+        String url = "https:reqres.in/api/users?page2";
         // https:reqres.in/api/users?page2
         // http:localhost:8081/rest/hikes
 
-        String asd;
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        Response responses = null;
+
         try {
-            asd = run("https:reqres.in/api/users?page2");
-            MainActivity.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mTextViewResult.setText(asd);
-                }
-            });
+            // Do Get request
+            responses = client.newCall(request).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            // Do Get request
+            responses = client.newCall(request).execute();
+            String jsonData = responses.body().string();
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mTextViewResult.setText(jsonData);
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 
 
