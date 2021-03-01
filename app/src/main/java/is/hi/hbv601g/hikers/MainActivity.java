@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity{
 
         mTextViewResult = findViewById(R.id.text_view_result);
 
-        String url = "https:reqres.in/api/users?page2";
+        String url = "http:localhost:8080/rest/hikes";
         // https:reqres.in/api/users?page2
         // http:localhost:8081/rest/hikes
 
