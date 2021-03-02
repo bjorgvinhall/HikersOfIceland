@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity{
 
         mTextViewResult = findViewById(R.id.text_view_result);
 
-        String url = "http:localhost:8081/rest/hikes";
+
+        String url = "http:10.0.2.2:8080/rest/hikes";
         // https:reqres.in/api/users?page2
         // http:localhost:8081/rest/hikes
 
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity{
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -56,13 +59,11 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
+                    final String myResponse = Objects.requireNonNull(response.body()).string();
 
                     MainActivity.this.runOnUiThread(() -> mTextViewResult.setText(myResponse));
                 }
             }
         });
-
-
     }
 }
