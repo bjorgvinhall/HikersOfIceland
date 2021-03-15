@@ -1,5 +1,7 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import android.annotation.SuppressLint;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,4 +57,8 @@ public class Profile {
         return completedAchievements;
     }
 
+    @SuppressLint("NewApi")
+    public void setCompletedAchievements(List<ArrayList> arr) {
+        arr.forEach((n) -> this.completedAchievements = n);
+    }
 }
