@@ -4,91 +4,91 @@ import java.util.Collections;
 import java.util.List;
 
 public class Hike {
-    private long id;
-    private List<Achievement> achievements;
-    private List<Item> items;
-    private List<Review> reviews;
-    private String name;
-    private String description;
-    private String location;
-    private String image;
+    private long mId;
+    private List<Achievement> mAchievements;
+    private List<Item> mItems;
+    private List<Review> mReviews;
+    private String mName;
+    private String mDescription;
+    private String mLocation;
+    private String mImage;
 
     public Hike() {
 
     }
 
     public Hike(long id, String name, String description, String location, String image, List<Achievement> achievements) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
-        this.image = image;
-        this.achievements = achievements;
+        this.mId = id;
+        this.mName = name;
+        this.mDescription = description;
+        this.mLocation = location;
+        this.mImage = image;
+        this.mAchievements = achievements;
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getDescription() {
-        return description;
+        return mDescription;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.mDescription = description;
     }
 
     public String getLocation() {
-        return location;
+        return mLocation;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.mLocation = location;
     }
 
     public String getImage() {
-        return image;
+        return mImage;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.mImage = image;
     }
 
     public List<Achievement> getAchievements() {
-        Collections.reverse(achievements);
-        return achievements;
+        Collections.reverse(mAchievements);
+        return mAchievements;
     }
 
     public void setAchievements(List<Achievement> achievements) {
-        this.achievements = achievements;
+        this.mAchievements = achievements;
     }
 
     public List<Review> getReviews() {
-        Collections.reverse(reviews);
-        return reviews;
+        Collections.reverse(mReviews);
+        return mReviews;
     }
 
     public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
+        this.mReviews = reviews;
     }
 
     public List<Item> getItems() {
-        return items;
+        return mItems;
     }
 
     public void setItems(List<Item> items) {
-        this.items = items;
+        this.mItems = items;
     }
 }

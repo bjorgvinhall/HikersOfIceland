@@ -6,14 +6,14 @@ public enum ItemType {
     FLORA("flora");
 
 
-    private final String displayValue;
+    private final String mDisplayValue;
 
     private ItemType(String displayValue) {
-        this.displayValue = displayValue;
+        this.mDisplayValue = displayValue;
     }
 
     public String getDisplayValue() {
-        return displayValue;
+        return mDisplayValue;
     }
 
 }
