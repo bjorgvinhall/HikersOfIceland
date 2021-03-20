@@ -1,6 +1,9 @@
 package is.hi.hbv601g.hikers.Entities;
 
 import com.google.gson.annotations.SerializedName;
+import android.annotation.SuppressLint;
+
+import androidx.appcompat.widget.ActionMenuView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,4 +67,8 @@ public class Profile {
         return mCompletedAchievements;
     }
 
+    @SuppressLint("NewApi")
+    public void setCompletedAchievements(List<Achievement> arr) {
+        arr.forEach((n) -> this.completedAchievements.add(n));
+    }
 }
