@@ -1,49 +1,55 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Achievement {
-    private long id;
-    private String name;
-    private String description;
-    private int difficulty;
+    @SerializedName("id")
+    private long mId;
+    @SerializedName("name")
+    private String mName;
+    @SerializedName("description")
+    private String mDescription;
+    @SerializedName("difficulty")
+    private int mDifficulty;
 
     public Achievement(String name, String description, int difficulty, Hike hike) {
-        this.name = name;
-        this.description = description;
-        this.difficulty = difficulty;
+        this.mName = name;
+        this.mDescription = description;
+        this.mDifficulty = difficulty;
     }
     public Achievement() {
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getDescription() {
-        return description;
+        return mDescription;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.mDescription = description;
     }
 
     public int getDifficulty() {
-        return difficulty;
+        return mDifficulty;
     }
 
     public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
+        this.mDifficulty = difficulty;
     }
 
 }

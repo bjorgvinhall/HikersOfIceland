@@ -1,49 +1,55 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Review {
-    private long id;
-    private long userId;
-    private String reviewText;
-    private int rating;
+    @SerializedName("id")
+    private long mId;
+    @SerializedName("userId")
+    private long mUserId;
+    @SerializedName("reviewText")
+    private String mReviewText;
+    @SerializedName("rating")
+    private int mRating;
 
     public Review() { }
 
     public Review(String reviewText, int rating, Hike hike, long userId) {
-        this.userId = userId;
-        this.reviewText = reviewText;
-        this.rating = rating;
+        this.mUserId = userId;
+        this.mReviewText = reviewText;
+        this.mRating = rating;
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public long getuserId() {
-        return userId;
+        return mUserId;
     }
 
     public void setuserId(long userId) {
-        this.userId = userId;
+        this.mUserId = userId;
     }
 
     public String getReviewText() {
-        return reviewText;
+        return mReviewText;
     }
 
     public void setReviewText(String reviewText) {
-        this.reviewText = reviewText;
+        this.mReviewText = reviewText;
     }
 
     public int getRating() {
-        return rating;
+        return mRating;
     }
 
     public void setRating(int rating) {
-        this.rating = rating;
+        this.mRating = rating;
     }
 
 }

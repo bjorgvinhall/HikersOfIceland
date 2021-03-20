@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <AbsoluteLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/hikelist_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/hikelist_name"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_x="77dp"
+        android:layout_y="1dp"
+        android:text="Nafn á hike"
+        android:textSize="26dp" />
+
+    <Button
+        android:id="@+id/hikelist_button"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_x="313dp"
+        android:layout_y="38dp"
+        android:text="View" />
+
+</AbsoluteLayout>

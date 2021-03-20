@@ -1,60 +1,67 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Item {
-    private long id;
-    private String name;
-    private String description;
-    private ItemType itemType;
-    private String image;
+    @SerializedName("id")
+    private long mId;
+    @SerializedName("name")
+    private String mName;
+    @SerializedName("description")
+    private String mDescription;
+    @SerializedName("itemType")
+    private ItemType mItemType;
+    @SerializedName("image")
+    private String mImage;
 
     public Item(String name, String description, ItemType itemType, String image, Hike hike) {
-        this.name = name;
-        this.description = description;
-        this.itemType = itemType;
-        this.image = image;
+        this.mName = name;
+        this.mDescription = description;
+        this.mItemType = itemType;
+        this.mImage = image;
     }
 
     public Item() {
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getDescription() {
-        return description;
+        return mDescription;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.mDescription = description;
     }
 
     public String getImage() {
-        return image;
+        return mImage;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.mImage = image;
     }
 
     public ItemType getItemType() {
-        return itemType;
+        return mItemType;
     }
 
     public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
+        this.mItemType = itemType;
     }
 
 }
