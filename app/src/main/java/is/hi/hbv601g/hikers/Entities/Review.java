@@ -1,9 +1,15 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Review {
+    @SerializedName("id")
     private long mId;
+    @SerializedName("userId")
     private long mUserId;
+    @SerializedName("reviewText")
     private String mReviewText;
+    @SerializedName("rating")
     private int mRating;
 
     public Review() { }

@@ -1,15 +1,24 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Profile {
+    @SerializedName("id")
     private long mId;
+    @SerializedName("password")
     private String mPassword;
+    @SerializedName("username")
     private String mUsername;
+    @SerializedName("name")
     private String mName;
+    @SerializedName("age")
     private int mAge;
+    @SerializedName("admin")
     private boolean mAdmin;
+    @SerializedName("completedAchievements")
     private List<Achievement> mCompletedAchievements = new ArrayList<>();
 
     public Profile(){ }

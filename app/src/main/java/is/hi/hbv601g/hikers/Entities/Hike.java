@@ -1,16 +1,26 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Collections;
 import java.util.List;
 
 public class Hike {
+    @SerializedName("id")
     private long mId;
+    @SerializedName("achievements")
     private List<Achievement> mAchievements;
+    @SerializedName("items")
     private List<Item> mItems;
+    @SerializedName("reviews")
     private List<Review> mReviews;
+    @SerializedName("name")
     private String mName;
+    @SerializedName("description")
     private String mDescription;
+    @SerializedName("location")
     private String mLocation;
+    @SerializedName("image")
     private String mImage;
 
     public Hike() {

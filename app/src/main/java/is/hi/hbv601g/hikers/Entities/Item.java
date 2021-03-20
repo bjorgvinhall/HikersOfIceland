@@ -1,10 +1,17 @@
 package is.hi.hbv601g.hikers.Entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Item {
+    @SerializedName("id")
     private long mId;
+    @SerializedName("name")
     private String mName;
+    @SerializedName("description")
     private String mDescription;
+    @SerializedName("itemType")
     private ItemType mItemType;
+    @SerializedName("image")
     private String mImage;
 
     public Item(String name, String description, ItemType itemType, String image, Hike hike) {
