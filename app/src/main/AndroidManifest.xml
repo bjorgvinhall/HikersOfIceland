@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="is.hi.hbv601g.hikers">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:networkSecurityConfig="@xml/network_security_config"
@@ -10,13 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HikersOfIceland">
-        <activity android:name=".MainActivity">
+
+        <!--    Login Activity is the initial activity    -->
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--    Other Activities    -->
+        <activity android:name=".MainActivity" />
+        <activity android:name=".HikeActivity" />
+
+
     </application>
 
 </manifest>

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Hikers of Iceland</string>
     <string name="rest_string"></string>
+    <string name="login_header">Hikers of Iceland</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="button_signup">Sign up</string>
 </resources>
