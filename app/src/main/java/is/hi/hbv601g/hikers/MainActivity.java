@@ -46,6 +46,14 @@ public class MainActivity extends AppCompatActivity{
         ListView lv = (ListView) findViewById(R.id.main_listview);
         ListAdapter listAdapter = new ListAdapter(this, hikes);
 
+        Button searchButton = findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search();
+            }
+        });
+
         Service service = new Service(this);
         service.getHikes(new NetworkCallback<List<Hike>>() {
             @Override
@@ -61,6 +69,11 @@ public class MainActivity extends AppCompatActivity{
         });
 
         lv.setAdapter(listAdapter);
+    }
+
+    private void search() {
+        // TODO
+        Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
     }
 
     private class ListAdapter extends BaseAdapter {
@@ -116,6 +129,8 @@ public class MainActivity extends AppCompatActivity{
             });
             return itemView;
         }
+
+
 
 
     }

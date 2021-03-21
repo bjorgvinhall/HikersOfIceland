@@ -7,7 +7,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
@@ -38,5 +42,23 @@ public class HikeActivity extends AppCompatActivity {
         hikeDesc.setText(hike.getDescription());
     }
 
+    /* incomplete home button
+    @NonNull
+    @Override
+    public View home(@Nullable View convertView) {
+        View home = convertView;
+        home = (home == null) ? inflater.inflate(R.layout.hike_list_item): home;
+        Button homeButton = (Button) home.findViewById(R.id.homeButton);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(HikeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        return home;
+    }*/
 
 }
