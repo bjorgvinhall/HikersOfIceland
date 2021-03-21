@@ -58,7 +58,7 @@ public class HikeActivity extends AppCompatActivity {
         List<Review> reviews;
         private LayoutInflater inflater = null;
 
-        public ListAdapter(Activity context, List<Review> Reviews) {
+        public ListAdapter(Activity context, List<Review> reviews) {
             this.context = context;
             this.reviews = reviews;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -90,15 +90,20 @@ public class HikeActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View itemView = convertView;
             itemView = (itemView == null) ? inflater.inflate(R.layout.review_list_item, null): itemView;
-            TextView textViewName = (TextView) itemView.findViewById(R.id.reviewlist_uname);
+            TextView textViewDesc = (TextView) itemView.findViewById(R.id.reviewlist_desc);
+            TextView textViewRating = (TextView) itemView.findViewById(R.id.reviewlist_rating);
+
             Button btn = (Button) itemView.findViewById(R.id.reviewlist_button);
 
             Review selectedReview = reviews.get(position);
-            textViewName.setText(selectedReview.getReviewText());
+            textViewDesc.setText(selectedReview.getReviewText());
+            textViewRating.setText(String.valueOf(selectedReview.getRating()));
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //delete Review if userid = current useid
+                    Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
+
                 }
             });
             return itemView;
