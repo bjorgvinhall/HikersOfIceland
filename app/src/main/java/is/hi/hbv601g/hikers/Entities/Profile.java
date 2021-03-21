@@ -67,8 +67,8 @@ public class Profile {
         return mCompletedAchievements;
     }
 
-    @SuppressLint("NewApi")
-    public void setCompletedAchievements(List<Achievement> arr) {
-        arr.forEach((n) -> this.completedAchievements.add(n));
-    }
+//    @SuppressLint("NewApi")
+//    public void setCompletedAchievements(List<Achievement> arr) {
+//        arr.forEach((n) -> this.completedAchievements.add(n));
+//    }
 }
