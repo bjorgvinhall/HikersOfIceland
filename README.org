@@ -1,5 +1,5 @@
 * HikersOfIceland
 
 ** login info:
-user: hikeadmin
-password: admin
+- user: hikeadmin
+- password: admin
