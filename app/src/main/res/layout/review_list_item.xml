@@ -12,27 +12,28 @@
 
         <Button
             android:id="@+id/reviewlist_button"
-            android:layout_width="71dp"
+            android:layout_width="101dp"
             android:layout_height="46dp"
-            android:layout_x="3dp"
-            android:layout_y="67dp"
-            android:text="Delete" />
+            android:layout_x="5dp"
+            android:layout_y="66dp"
+            android:text="Delete"
+            app:backgroundTint="#8A8A8A" />
 
         <TextView
             android:id="@+id/reviewlist_rating"
-            android:layout_width="127dp"
-            android:layout_height="61dp"
-            android:layout_x="-3dp"
-            android:layout_y="4dp"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_x="5dp"
+            android:layout_y="26dp"
             android:text="1"
-            android:textSize="48sp" />
+            android:textSize="26sp" />
 
         <TextView
             android:id="@+id/reviewlist_desc"
-            android:layout_width="323dp"
-            android:layout_height="81dp"
-            android:layout_x="70dp"
-            android:layout_y="4dp"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_x="35dp"
+            android:layout_y="26dp"
             android:text="Review text"
             android:textSize="26dp" />
     </AbsoluteLayout>

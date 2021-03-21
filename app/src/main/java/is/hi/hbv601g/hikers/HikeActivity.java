@@ -102,6 +102,8 @@ public class HikeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //delete Review if userid = current useid
+                    Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
+
                 }
             });
             return itemView;
