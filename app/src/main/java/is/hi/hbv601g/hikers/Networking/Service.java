@@ -11,7 +11,7 @@ import java.util.List;
 import is.hi.hbv601g.hikers.Entities.Hike;
 
 public class Service {
-    private static final String BASEURL = "http:10.0.2.2:8080/rest/";
+    private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
     RequestHelper mRequestHelper;
 
     public Service(Context context) {

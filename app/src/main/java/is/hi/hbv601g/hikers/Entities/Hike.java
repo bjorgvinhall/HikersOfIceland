@@ -3,6 +3,7 @@ package is.hi.hbv601g.hikers.Entities;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 @SuppressWarnings("serial")

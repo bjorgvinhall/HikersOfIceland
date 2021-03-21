@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/reviewlist_uname"
+            android:layout_width="322dp"
+            android:layout_height="wrap_content"
+            android:layout_x="77dp"
+            android:layout_y="1dp"
+            android:text="Nafn á user"
+            android:textSize="26dp" />
+
+        <Button
+            android:id="@+id/reviewlist_button"
+            android:layout_width="71dp"
+            android:layout_height="46dp"
+            android:layout_x="11dp"
+            android:layout_y="100dp"
+            android:text="Delete" />
+
+        <TextView
+            android:id="@+id/reviewlist_rating"
+            android:layout_width="45dp"
+            android:layout_height="61dp"
+            android:layout_x="15dp"
+            android:layout_y="4dp"
+            android:text="5"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/reviewlist_desc"
+            android:layout_width="324dp"
+            android:layout_height="127dp"
+            android:layout_x="80dp"
+            android:layout_y="65dp"
+            android:text="Review text"
+            android:textSize="26dp" />
+    </AbsoluteLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
