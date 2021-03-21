@@ -17,11 +17,9 @@ import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.R;
 
 public class Service {
-<<<<<<< HEAD
-=======
+
     private static final String TAG = "Service";
 
->>>>>>> 08d4364eff04cc1f677cd1c6ca15dd8533a6ab2d
     private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
     RequestHelper mRequestHelper;
 
@@ -46,8 +44,7 @@ public class Service {
         });
     }
 
-<<<<<<< HEAD
-=======
+
     public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback){
         mRequestHelper.post(BASEURL + "login", requestBody, new NetworkCallback<String>() {
             @Override
@@ -63,5 +60,4 @@ public class Service {
             }
         });
     }
->>>>>>> 08d4364eff04cc1f677cd1c6ca15dd8533a6ab2d
 }
