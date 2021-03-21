@@ -50,4 +50,7 @@ public class RequestHelper {
         mQueue.add(request);
     }
 
+    // TODO implement POST,PATCH,DELETE methods
+
+
 }

@@ -5,10 +5,11 @@ import android.annotation.SuppressLint;
 
 import androidx.appcompat.widget.ActionMenuView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Profile {
+public class Profile implements Serializable {
     @SerializedName("id")
     private long mId;
     @SerializedName("password")

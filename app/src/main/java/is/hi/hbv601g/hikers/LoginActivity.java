@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signUp() {
         // TODO
-        Toast.makeText(getApplicationContext(), "Not implemented!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
     }
 
 }

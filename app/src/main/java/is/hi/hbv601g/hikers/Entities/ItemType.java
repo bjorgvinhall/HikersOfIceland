@@ -1,6 +1,8 @@
 package is.hi.hbv601g.hikers.Entities;
 
-public enum ItemType {
+import java.io.Serializable;
+
+public enum ItemType implements Serializable {
     MOUNTAIN("mountain"),
     WILDLIFE("wildlife"),
     FLORA("flora");

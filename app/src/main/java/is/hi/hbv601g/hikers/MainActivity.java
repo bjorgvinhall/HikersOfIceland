@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,18 +54,18 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(String error) {
-                Log.e(TAG, "Failed to get hikes: "  + error);
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         lv.setAdapter(listAdapter);
     }
 
-    private static class ListAdapter extends BaseAdapter {
+    private class ListAdapter extends BaseAdapter {
         Activity context;
         List<Hike> hikes;
-        private static LayoutInflater inflater = null;
+        private LayoutInflater inflater = null;
 
         public ListAdapter(Activity context, List<Hike> hikes) {
             this.context = context;
@@ -97,39 +99,23 @@ public class MainActivity extends AppCompatActivity{
             View itemView = convertView;
             itemView = (itemView == null) ? inflater.inflate(R.layout.hike_list_item, null): itemView;
             TextView textViewName = (TextView) itemView.findViewById(R.id.hikelist_name);
+            Button btn = (Button) itemView.findViewById(R.id.hikelist_button);
+
             Hike selectedHike = hikes.get(position);
             textViewName.setText(selectedHike.getName());
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent;
+                    intent = new Intent(MainActivity.this, HikeActivity.class);
+                    intent.putExtra("selectedHike", selectedHike); // Pass the selected hike to next Activity
+                    startActivity(intent);
+
+                }
+            });
             return itemView;
-
-//            ViewHolder mainViewholder = null;
-//            if(convertView == null) {
-//                LayoutInflater inflater = LayoutInflater.from(getContext());
-//                convertView = inflater.inflate(layout, parent, false);
-//                ViewHolder viewHolder = new ViewHolder();
-//                viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.hikelist_image);
-//                viewHolder.title = (TextView) convertView.findViewById(R.id.hikelist_name);
-//                viewHolder.button = (Button) convertView.findViewById(R.id.hikelist_button);
-//                viewHolder.button.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Toast.makeText(getContext(), "Click on item number " + position, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                convertView.setTag(viewHolder);
-//            } else {
-//                mainViewholder = (ViewHolder) convertView.getTag();
-//                mainViewholder.title.setText(getItem(position));
-//            }
-//
-//            return convertView;
         }
+
+
     }
-
-    public class ViewHolder {
-
-        ImageView thumbnail;
-        TextView title;
-        Button button;
-    }
-
 }

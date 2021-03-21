@@ -2,10 +2,11 @@ package is.hi.hbv601g.hikers.Entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
-
-public class Hike {
+@SuppressWarnings("serial")
+public class Hike implements Serializable {
     @SerializedName("id")
     private long mId;
     @SerializedName("achievements")

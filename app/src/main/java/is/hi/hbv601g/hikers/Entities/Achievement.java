@@ -2,7 +2,9 @@ package is.hi.hbv601g.hikers.Entities;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Achievement {
+import java.io.Serializable;
+
+public class Achievement implements Serializable {
     @SerializedName("id")
     private long mId;
     @SerializedName("name")
