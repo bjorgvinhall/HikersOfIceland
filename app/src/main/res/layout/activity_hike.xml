@@ -21,6 +21,11 @@
             android:id="@+id/hike_desc"
             android:layout_width="match_parent"
             android:layout_height="248dp" />
+
+        <ListView
+            android:id="@+id/hike_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

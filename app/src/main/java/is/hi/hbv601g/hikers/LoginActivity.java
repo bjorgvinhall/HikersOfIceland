@@ -21,7 +21,7 @@ import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "YOLO";
+    private static final String TAG = "LoginActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

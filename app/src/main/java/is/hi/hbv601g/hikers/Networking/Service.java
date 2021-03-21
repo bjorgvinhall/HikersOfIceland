@@ -17,7 +17,8 @@ import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.R;
 
 public class Service {
-    private static final String TAG = "YOLO";
+    private static final String TAG = "Service";
+
     private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
     RequestHelper mRequestHelper;
 
