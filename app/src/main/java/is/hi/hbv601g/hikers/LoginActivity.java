@@ -79,22 +79,4 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-//    JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("username", userName);
-//        jsonObject.put("password", userPass);
-//
-//    Service service = new Service(this);
-//        service.postSignup(jsonObject, new NetworkCallback<Profile>() {
-//        @Override
-//        public void onSuccess(Profile result) {
-//            Toast.makeText(getApplicationContext(), "Profile created", Toast.LENGTH_SHORT).show();
-//        }
-//
-//        @Override
-//        public void onFailure(String error) {
-//            Toast.makeText(getApplicationContext(), R.string.signup_wrong, Toast.LENGTH_SHORT).show();
-//            Log.e(TAG, error);
-//        }
-//    });
-
 }
