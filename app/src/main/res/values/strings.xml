@@ -10,4 +10,6 @@
     <string name="login_wrong">Wrong login info</string>
     <string name="signup_wrong">Error in signup</string>
     <string name="button_create_account">Create Account</string>
+    <string name="form_name">Full name</string>
+    <string name="form_age">Age</string>
 </resources>

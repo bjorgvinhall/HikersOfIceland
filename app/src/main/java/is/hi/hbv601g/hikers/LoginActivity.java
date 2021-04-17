@@ -49,11 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    signUp("kalli", "bimbo");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Intent intent;
+                intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -81,24 +79,22 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void signUp(String userName, String userPass) throws JSONException{
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("username", userName);
-        jsonObject.put("password", userPass);
-
-        Service service = new Service(this);
-        service.postSignup(jsonObject, new NetworkCallback<Profile>() {
-            @Override
-            public void onSuccess(Profile result) {
-                Toast.makeText(getApplicationContext(), "Profile created", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(String error) {
-                Toast.makeText(getApplicationContext(), R.string.signup_wrong, Toast.LENGTH_SHORT).show();
-                Log.e(TAG, error);
-            }
-        });
-    }
+//    JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("username", userName);
+//        jsonObject.put("password", userPass);
+//
+//    Service service = new Service(this);
+//        service.postSignup(jsonObject, new NetworkCallback<Profile>() {
+//        @Override
+//        public void onSuccess(Profile result) {
+//            Toast.makeText(getApplicationContext(), "Profile created", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        public void onFailure(String error) {
+//            Toast.makeText(getApplicationContext(), R.string.signup_wrong, Toast.LENGTH_SHORT).show();
+//            Log.e(TAG, error);
+//        }
+//    });
 
 }

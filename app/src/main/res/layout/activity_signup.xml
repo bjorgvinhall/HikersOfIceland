@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.163" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/signup_username"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="244dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/signup_password"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="4dp"
@@ -56,10 +56,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_username" />
+
+
+    <EditText
+        android:id="@+id/signup_name"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_name"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password" />
+
+    <EditText
+        android:id="@+id/signup_age"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:hint="@string/form_age"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_name" />
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/signup_button"
         android:layout_width="170dp"
         android:layout_height="43dp"
         android:layout_gravity="start"
@@ -70,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_age"
+        app:layout_constraintVertical_bias="0.05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
