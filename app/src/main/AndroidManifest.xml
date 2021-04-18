@@ -23,6 +23,7 @@
         <!--    Other Activities    -->
         <activity android:name=".MainActivity" />
         <activity android:name=".HikeActivity" />
+        <activity android:name=".SignUpActivity" />
 
 
     </application>

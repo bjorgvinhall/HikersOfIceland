@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Hikers of Iceland</string>
     <string name="rest_string"></string>
-    <string name="login_header">Hikers of Iceland</string>
-    <string name="login_username">Username</string>
-    <string name="login_password">Password</string>
+    <string name="form_header">Hikers of Iceland</string>
+    <string name="form_header_legend">Sign up</string>
+    <string name="form_username">Username</string>
+    <string name="form_password">Password</string>
     <string name="button_login">Login</string>
     <string name="button_signup">Sign up</string>
     <string name="login_wrong">Wrong login info</string>
+    <string name="signup_wrong">Error in signup</string>
+    <string name="button_create_account">Create Account</string>
+    <string name="form_name">Full name</string>
+    <string name="form_age">Age</string>
 </resources>
