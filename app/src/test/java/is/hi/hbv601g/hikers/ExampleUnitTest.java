@@ -17,11 +17,11 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-    @Test
-    // Profile class can create an empty object
-    public void subraction_isCorrect() {
-        Profile profile = new Profile();
-        boolean actualAnswer = profile.isEmpty();
-        assertTrue(actualAnswer);
-    }
+//    @Test
+//    // Profile class can create an empty object
+//    public void subraction_isCorrect() {
+//        Profile profile = new Profile();
+//        boolean actualAnswer = profile.isEmpty();
+//        assertTrue(actualAnswer);
+//    }
 }

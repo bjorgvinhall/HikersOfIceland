@@ -12,4 +12,5 @@
     <string name="button_create_account">Create Account</string>
     <string name="form_name">Full name</string>
     <string name="form_age">Age</string>
+    <string name="profile_header_legend">My profile</string>
 </resources>
