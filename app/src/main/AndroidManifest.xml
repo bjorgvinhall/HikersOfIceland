@@ -23,7 +23,9 @@
         <!--    Other Activities    -->
         <activity android:name=".MainActivity" />
         <activity android:name=".HikeActivity" />
-
+        <activity android:name=".ReviewActivity" />
+        <activity android:name=".AchievementActivity" />
+        <activity android:name=".ItemActivity" />
 
     </application>
 

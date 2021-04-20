@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/hikeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="155dp"
+            android:layout_y="109dp"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/addReviewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="282dp"
+            android:layout_y="530dp"
+            android:background="#8A8A8A"
+            android:text="Add Review" />
+
+        <ListView
+            android:id="@+id/review_listview"
+            android:layout_width="409dp"
+            android:layout_height="278dp"
+            android:layout_x="-1dp"
+            android:layout_y="168dp">
+
+        </ListView>
+
+        <EditText
+            android:id="@+id/addReview"
+            android:layout_width="wrap_content"
+            android:layout_height="97dp"
+            android:layout_x="58dp"
+            android:layout_y="520dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:text="Write Review here" />
+    </AbsoluteLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemlisttype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/itemlistname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="-1dp"
+            android:layout_y="41dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/itemlistdesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="84dp"
+            android:text="TextView" />
+
+    </AbsoluteLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

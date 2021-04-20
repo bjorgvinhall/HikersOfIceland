@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/achievName"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/achievlistdesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="-1dp"
+            android:layout_y="23dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/achievlistdiff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="42dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/achievlistname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="7dp"
+            android:text="TextView" />
+    </AbsoluteLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
