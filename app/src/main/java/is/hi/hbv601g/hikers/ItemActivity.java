@@ -84,7 +84,7 @@ public class ItemActivity extends AppCompatActivity {
             TextView itemlistdesc = (TextView) itemView.findViewById(R.id.itemlistdesc);
 
             Item selectedItem = items.get(position);
-            if (String.valueOf(selectedItem.getItemType()) == "MOUNTAIN") {
+            if (String.valueOf(selectedItem.getItemType()).equals("MOUNTAIN")) {
                 itemlisttype.setText("Fjall");
             }
             if (String.valueOf(selectedItem.getItemType()) == "WILDLIFE") {
