@@ -68,6 +68,14 @@ public class Profile implements Serializable {
         return mCompletedAchievements;
     }
 
+    public boolean isFull() {
+        return getUsername() != null;
+    }
+
+    public boolean isEmpty() {
+        return getUsername() == null && getPassword() == null && getName() == null && getAge() == 0 && !getAdmin() && getCompletedAchievements() == null;
+    }
+
 //    @SuppressLint("NewApi")
 //    public void setCompletedAchievements(List<Achievement> arr) {
 //        arr.forEach((n) -> this.completedAchievements.add(n));

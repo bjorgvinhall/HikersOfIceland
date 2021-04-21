@@ -49,7 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signUp();
+                Intent intent;
+                intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -75,11 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e(TAG, error);
             }
         });
-    }
-
-    private void signUp() {
-        // TODO
-        Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
     }
 
 }
