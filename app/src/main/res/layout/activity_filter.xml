@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="133dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="rating"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low"
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="90dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High"
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <Button
+        android:layout_width="127dp"
+        android:layout_height="43dp"
+        android:text="Flora"
+        android:onClick="floraPopup"
+
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="186dp" />|
+
+</androidx.constraintlayout.widget.ConstraintLayout>
