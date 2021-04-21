@@ -7,17 +7,17 @@
 
     <ImageView
         android:id="@+id/hikelist_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_x="0dp"
         android:layout_y="0dp"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/hikelist_name"
-        android:layout_width="322dp"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
-        android:layout_x="77dp"
+        android:layout_x="96dp"
         android:layout_y="1dp"
         android:text="Nafn á hike"
         android:textSize="26dp" />

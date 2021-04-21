@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,13 +92,24 @@ public class MainActivity extends AppCompatActivity{
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            Hike selectedHike = hikes.get(position);
+
             View itemView = convertView;
             itemView = (itemView == null) ? inflater.inflate(R.layout.hike_list_item, null): itemView;
-            TextView textViewName = (TextView) itemView.findViewById(R.id.hikelist_name);
-            Button btn = (Button) itemView.findViewById(R.id.hikelist_button);
 
-            Hike selectedHike = hikes.get(position);
+            TextView textViewName = (TextView) itemView.findViewById(R.id.hikelist_name);
             textViewName.setText(selectedHike.getName());
+
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.hikelist_image);
+            Picasso.get()
+                    .load( "https://hikers-of-iceland.herokuapp.com/rest/" + selectedHike.getId() + "/image")
+                    .resize(90, 90)
+                    .centerCrop()
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
+                    .into(imageView);
+
+            Button btn = (Button) itemView.findViewById(R.id.hikelist_button);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
