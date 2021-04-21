@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity{
 
             ImageView imageView = (ImageView) itemView.findViewById(R.id.hikelist_image);
             Picasso.get()
-                    .load( "https://hikers-of-iceland.herokuapp.com/rest/" + selectedHike.getId() + "/image")
+                    .load( "https://hikers-of-iceland.herokuapp.com/rest/hikes/" + selectedHike.getId() + "/image")
                     .resize(90, 90)
                     .centerCrop()
                     .placeholder(R.drawable.placeholder)
