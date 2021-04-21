@@ -8,7 +8,7 @@ public class Review implements Serializable {
     @SerializedName("id")
     private long mId;
     @SerializedName("userId")
-    private long mUserId;
+    private String mUserId;
     @SerializedName("reviewText")
     private String mReviewText;
     @SerializedName("rating")
@@ -16,7 +16,7 @@ public class Review implements Serializable {
 
     public Review() { }
 
-    public Review(String reviewText, int rating, Hike hike, long userId) {
+    public Review(String reviewText, int rating, Hike hike, String userId) {
         this.mUserId = userId;
         this.mReviewText = reviewText;
         this.mRating = rating;
@@ -30,11 +30,11 @@ public class Review implements Serializable {
         this.mId = id;
     }
 
-    public long getuserId() {
+    public String getuserId() {
         return mUserId;
     }
 
-    public void setuserId(long userId) {
+    public void setuserId(String userId) {
         this.mUserId = userId;
     }
 

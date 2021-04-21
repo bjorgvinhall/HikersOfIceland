@@ -74,7 +74,4 @@ public class RequestHelper {
         );
         mQueue.add(request);
     }
-
-
-
 }

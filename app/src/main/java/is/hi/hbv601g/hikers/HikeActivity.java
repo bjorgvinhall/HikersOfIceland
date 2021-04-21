@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Item;
 import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
@@ -46,72 +47,40 @@ public class HikeActivity extends AppCompatActivity {
         hikeName.setText(hike.getName());
         hikeDesc.setText(hike.getDescription());
 
-        List<Review> reviews = new ArrayList<>();
-        reviews = hike.getReviews();
+        Button btn = (Button) findViewById(R.id.reviewButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(HikeActivity.this, ReviewActivity.class);
+                intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                startActivity(intent);
 
-        ListView lv = (ListView) findViewById(R.id.hike_listview);
-        HikeActivity.ListAdapter listAdapter = new HikeActivity.ListAdapter(this, reviews);
+            }
 
-        lv.setAdapter(listAdapter);
-    }
+        });
+        Button btn2 = (Button) findViewById(R.id.achievButton);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(HikeActivity.this, AchievementActivity.class);
+                intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                startActivity(intent);
 
-    private class ListAdapter extends BaseAdapter {
-        Activity context;
-        List<Review> reviews;
-        private LayoutInflater inflater = null;
+            }
+        });
+        Button btn3 = (Button) findViewById(R.id.itemButton);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(HikeActivity.this, ItemActivity.class);
+                intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                startActivity(intent);
 
-        public ListAdapter(Activity context, List<Review> reviews) {
-            this.context = context;
-            this.reviews = reviews;
-            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        public void setData(List<Hike> hikes) {
-            this.reviews = reviews;
-            notifyDataSetChanged();
-        }
-
-        @Override
-        public int getCount() {
-            return reviews.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return reviews.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return reviews.get(i).getId();
-        }
-
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            View itemView = convertView;
-            itemView = (itemView == null) ? inflater.inflate(R.layout.review_list_item, null): itemView;
-            TextView textViewDesc = (TextView) itemView.findViewById(R.id.reviewlist_desc);
-            TextView textViewRating = (TextView) itemView.findViewById(R.id.reviewlist_rating);
-
-            Button btn = (Button) itemView.findViewById(R.id.reviewlist_button);
-
-            Review selectedReview = reviews.get(position);
-            textViewDesc.setText(selectedReview.getReviewText());
-            textViewRating.setText(String.valueOf(selectedReview.getRating()));
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //delete Review if userid = current useid
-                    Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-            return itemView;
-        }
-
-
+            }
+        });
     }
 }
 

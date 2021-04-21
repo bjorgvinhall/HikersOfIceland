@@ -60,4 +60,18 @@ public class Service {
             }
         });
     }
+
+    public void postSignup(JSONObject requestBody, NetworkCallback<Profile> callback){
+        mRequestHelper.post(BASEURL + "signup", requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Profile profile = gson.fromJson(result, Profile.class);
+                callback.onSuccess(profile);
+            }
+
+            @Override
+            public void onFailure(String error) { callback.onFailure(error); }
+        });
+    }
 }
