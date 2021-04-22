@@ -29,7 +29,7 @@ public class Hike implements Serializable {
 
     }
 
-    public Hike(long id, String name, String description, String location, String image, List<Achievement> achievements) {
+    public Hike(long id, String name, String description, String location, String image, List<Achievement> achievements){
         this.mId = id;
         this.mName = name;
         this.mDescription = description;

@@ -50,14 +50,11 @@ public class FilterActivity extends MainActivity {
 
         // Get hikes
         Intent intent = getIntent();
-        Hike hikes = (Hike) intent.getSerializableExtra("hikes");
+        ArrayList<Hike> hikes = (ArrayList<Hike>) intent.getSerializableExtra("hikes");
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Item> items = new ArrayList<Item>();
-                items = hikes.getItems();
-                Hike filteredHikes = null;
 
                 if (cbLow.isChecked()) {
 
@@ -78,16 +75,13 @@ public class FilterActivity extends MainActivity {
 
                 }
                 if (cbLoa.isChecked()) {
-                    for(int i = 0; i < items.size(); i++) {
-                        if (!hikes.getItems().get(i).getName().equals("Loa")) {
-                        };
-                    }
+                    isIn("Lóa");
                 }
                 if (cbRjupa.isChecked()) {
-
+                    isIn("Rjúpa");
                 }
                 if (cbKrummi.isChecked()) {
-
+                    isIn("Krummi");
                 }
                 if (cbLupina.isChecked()) {
 
@@ -117,13 +111,34 @@ public class FilterActivity extends MainActivity {
 
                 }
 
-
-
-
+                Intent intent = new Intent(FilterActivity.this, MainActivity.class);
+                intent.putExtra("hikes", hikes); // Pass the filtered hikes to MainActivity
+                startActivity(intent);
             }
+
+            private void isIn( String s) {
+                boolean includes = false;
+                for(int i = 0; i < hikes.size(); i++) {
+                    Hike hike = hikes.get(i);
+                    for(int j=0; j < hike.getItems().size(); i++) {
+                        if (hike.getItems().get(i).getName().equals(s)) {
+                            includes = true;
+                            continue;
+                        }
+                    }
+                    if (!includes) {
+                        hikes.set(i, null);
+                    }
+                    includes = false;
+                }
+            }
+
         });
 
+
+
     }
+
 
 
 }

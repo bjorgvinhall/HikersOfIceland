@@ -42,7 +42,14 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<Hike> hikes = new ArrayList<>();
+        ArrayList<Hike> hikes;
+        if (getIntent() != null) {
+            Intent intent = getIntent();
+            hikes = (ArrayList<Hike>) intent.getSerializableExtra("hikes");
+
+        } else {
+            hikes = new ArrayList<>();
+        }
         ListView lv = (ListView) findViewById(R.id.main_listview);
         ListAdapter listAdapter = new ListAdapter(this, hikes);
 
