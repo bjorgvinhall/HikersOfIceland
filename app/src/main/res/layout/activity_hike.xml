@@ -12,33 +12,57 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+        <ImageView
+            android:id="@+id/hike_image"
+            android:layout_width="match_parent"
+            android:layout_height="205dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
         <TextView
             android:id="@+id/hike_name"
-            android:layout_width="match_parent"
-            android:layout_height="75dp" />
+            android:layout_width="386dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Hafrahlíð og Reykjaborg"
+            android:textSize="30dp" />
+
 
         <TextView
             android:id="@+id/hike_desc"
             android:layout_width="match_parent"
-            android:layout_height="248dp" />
+            android:layout_height="313dp"
+            android:layout_marginHorizontal="10dp"
+            android:scrollbars="vertical"
+            android:text="Description"
+            android:textSize="18dp" />
 
-        <Button
-            android:id="@+id/reviewButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Umsagnir" />
 
-        <Button
-            android:id="@+id/achievButton"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Afrek" />
+            android:layout_height="49dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/itemButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Umhverfi" />
+            <Button
+                android:id="@+id/itemButton"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:text="Umhverfi" />
+
+            <Button
+                android:id="@+id/achievButton"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="Afrek" />
+
+            <Button
+                android:id="@+id/reviewButton"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:text="Umsagnir" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

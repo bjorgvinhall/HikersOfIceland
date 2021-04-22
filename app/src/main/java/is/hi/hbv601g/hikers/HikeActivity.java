@@ -3,13 +3,16 @@ package is.hi.hbv601g.hikers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +43,7 @@ public class HikeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hike);
         TextView hikeName = (TextView) findViewById(R.id.hike_name);
         TextView hikeDesc = (TextView) findViewById(R.id.hike_desc);
+        ImageView imageView = (ImageView) findViewById(R.id.hike_image);
 
         // Get the selected hike
         Intent intent = getIntent();
@@ -46,6 +52,15 @@ public class HikeActivity extends AppCompatActivity {
         // Update view
         hikeName.setText(hike.getName());
         hikeDesc.setText(hike.getDescription());
+        hikeDesc.setMovementMethod(new ScrollingMovementMethod());
+        Picasso.get()
+                .load( "https://hikers-of-iceland.herokuapp.com/rest/hikes/" + hike.getId() + "/image")
+                .resize(205, 100)
+                .centerCrop()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(imageView);
+
 
         Button btn = (Button) findViewById(R.id.reviewButton);
         btn.setOnClickListener(new View.OnClickListener() {
