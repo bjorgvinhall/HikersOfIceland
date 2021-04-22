@@ -14,6 +14,7 @@ import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
 import is.hi.hbv601g.hikers.Entities.Profile;
+import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.R;
 
 public class Service {
@@ -33,7 +34,8 @@ public class Service {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();
-                Type listType = new TypeToken<List<Hike>>(){}.getType();
+                Type listType = new TypeToken<List<Hike>>() {
+                }.getType();
                 List<Hike> hikes = gson.fromJson(result, listType);
                 callback.onSuccess(hikes);
             }
@@ -45,7 +47,23 @@ public class Service {
         });
     }
 
-    public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback){
+    public void getHikeById(long id, NetworkCallback<Hike> callback) {
+        mRequestHelper.get(BASEURL + "hikes/" + id, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Hike hike = gson.fromJson(result, Hike.class);
+                callback.onSuccess(hike);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
+    public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback) {
         mRequestHelper.post(BASEURL + "login", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -61,7 +79,7 @@ public class Service {
         });
     }
 
-    public void postSignup(JSONObject requestBody, NetworkCallback<Profile> callback){
+    public void postSignup(JSONObject requestBody, NetworkCallback<Profile> callback) {
         mRequestHelper.post(BASEURL + "signup", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -71,7 +89,9 @@ public class Service {
             }
 
             @Override
-            public void onFailure(String error) { callback.onFailure(error); }
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
         });
     }
 
@@ -86,6 +106,36 @@ public class Service {
 
             @Override
             public void onFailure(String error) { callback.onFailure(error); }
+        });
+    }
+    public void deleteReview(String selectedHike, String selectedReview, NetworkCallback<String> callback) {
+        String url = BASEURL + "hikes/" + selectedHike + "/" + "reviews/" + selectedReview;
+        mRequestHelper.delete(url, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
+    public void postReview(JSONObject requestBody, long selectedHike, NetworkCallback<Hike> callback) {
+        mRequestHelper.post(BASEURL + "hikes/" + selectedHike + "/reviews" , requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Hike hike = gson.fromJson(result, Hike.class);
+                callback.onSuccess(hike);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
         });
     }
 }

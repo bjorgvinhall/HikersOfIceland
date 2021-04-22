@@ -3,12 +3,14 @@ package is.hi.hbv601g.hikers;
         import android.app.Activity;
         import android.content.Context;
         import android.content.Intent;
+        import android.media.Image;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.BaseAdapter;
         import android.widget.Button;
+        import android.widget.ImageView;
         import android.widget.ListView;
         import android.widget.TextView;
         import android.widget.Toast;
@@ -22,6 +24,7 @@ package is.hi.hbv601g.hikers;
 
         import is.hi.hbv601g.hikers.Entities.Hike;
         import is.hi.hbv601g.hikers.Entities.Item;
+        import is.hi.hbv601g.hikers.Entities.Profile;
 
 public class ItemActivity extends AppCompatActivity {
     private static final String TAG = "ItemActivity";
@@ -34,6 +37,7 @@ public class ItemActivity extends AppCompatActivity {
         // Get the selected hike
         Intent intent = getIntent();
         Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         List<Item> items = new ArrayList<>();
         items = hike.getItems();
@@ -79,19 +83,19 @@ public class ItemActivity extends AppCompatActivity {
             itemView = (itemView == null) ? inflater.inflate(R.layout.item_list_item, null): itemView;
 
 
-            TextView itemlisttype = (TextView) itemView.findViewById(R.id.itemlisttype);
             TextView itemlistname = (TextView) itemView.findViewById(R.id.itemlistname);
             TextView itemlistdesc = (TextView) itemView.findViewById(R.id.itemlistdesc);
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.item_icon);
 
             Item selectedItem = items.get(position);
             if (String.valueOf(selectedItem.getItemType()).equals("MOUNTAIN")) {
-                itemlisttype.setText("Fjall");
+                imageView.setImageResource(R.drawable.mountain);
             }
-            if (String.valueOf(selectedItem.getItemType()) == "WILDLIFE") {
-                itemlisttype.setText("Dýralíf");
+            else if (String.valueOf(selectedItem.getItemType()).equals("WILDLIFE")) {
+                imageView.setImageResource(R.drawable.wildlife);
             }
             else{
-                itemlisttype.setText("Flóra");
+                imageView.setImageResource(R.drawable.flora);
             }
             itemlistname.setText(selectedItem.getName());
             itemlistdesc.setText(selectedItem.getDescription());

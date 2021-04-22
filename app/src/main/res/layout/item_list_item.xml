@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <AbsoluteLayout
@@ -8,26 +11,30 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/itemlisttype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
             android:id="@+id/itemlistname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="-1dp"
-            android:layout_y="41dp"
-            android:text="TextView" />
+            android:layout_x="9dp"
+            android:layout_y="3dp"
+            android:text="TextView"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/itemlistdesc"
-            android:layout_width="wrap_content"
+            android:layout_width="331dp"
             android:layout_height="wrap_content"
-            android:layout_x="0dp"
-            android:layout_y="84dp"
+            android:layout_x="8dp"
+            android:layout_y="23dp"
             android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_x="345dp"
+            android:layout_y="5dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </AbsoluteLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
