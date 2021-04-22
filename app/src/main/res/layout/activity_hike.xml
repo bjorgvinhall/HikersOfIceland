@@ -22,29 +22,23 @@
             android:layout_width="match_parent"
             android:layout_height="248dp" />
 
-        <TextView
-            android:id="@+id/hike_items"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="TextView" />
-
         <Button
             android:id="@+id/reviewButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Umsagnir" />
 
         <Button
             android:id="@+id/achievButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Afrek" />
 
         <Button
             android:id="@+id/itemButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Umhverfi" />
 
     </LinearLayout>
 

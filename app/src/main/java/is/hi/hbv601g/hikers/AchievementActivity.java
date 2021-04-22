@@ -33,9 +33,8 @@ public class AchievementActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
 
-        // Update view
-        TextView hikeName = (TextView) findViewById(R.id.hike_name);
 
+        // Makes a list of achievements from the selected hike
         List<Achievement> achievs = new ArrayList<>();
         achievs = hike.getAchievements();
 
@@ -78,15 +77,15 @@ public class AchievementActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View itemView = convertView;
             itemView = (itemView == null) ? inflater.inflate(R.layout.achiev_list_item, null) : itemView;
-            TextView achievlist_name = (TextView) itemView.findViewById(R.id.achievlistname);
-            TextView achievlist_diff = (TextView) itemView.findViewById(R.id.achievlistdiff);
-            TextView achievlist_desc = (TextView) itemView.findViewById(R.id.achievlistdesc);
+            TextView achievlistname = (TextView) itemView.findViewById(R.id.achievlistname);
+            TextView achievlistdiff = (TextView) itemView.findViewById(R.id.achievlistdiff);
+            TextView achievlistdesc = (TextView) itemView.findViewById(R.id.achievlistdesc);
 
             Achievement selectedAchiev = achievs.get(position);
 
-            achievlist_name.setText(selectedAchiev.getName());
-            achievlist_diff.setText(selectedAchiev.getDescription());
-            achievlist_desc.setText(String.valueOf(selectedAchiev.getDifficulty()));
+            achievlistname.setText(selectedAchiev.getName());
+            achievlistdiff.setText(selectedAchiev.getDescription());
+            achievlistdesc.setText(String.valueOf(selectedAchiev.getDifficulty()));
 
             return itemView;
         }

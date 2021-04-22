@@ -74,4 +74,21 @@ public class RequestHelper {
         );
         mQueue.add(request);
     }
+
+    public void delete(String url, NetworkCallback<String> callback){
+        StringRequest request = new StringRequest(
+                Request.Method.DELETE, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                callback.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        }
+        );
+        mQueue.add(request);
+    }
 }

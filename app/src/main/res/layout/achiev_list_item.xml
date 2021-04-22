@@ -14,24 +14,24 @@
             android:id="@+id/achievlistdesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="-1dp"
-            android:layout_y="23dp"
+            android:layout_x="15dp"
+            android:layout_y="48dp"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/achievlistdiff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="0dp"
-            android:layout_y="42dp"
+            android:layout_x="15dp"
+            android:layout_y="76dp"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/achievlistname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="0dp"
-            android:layout_y="7dp"
+            android:layout_x="16dp"
+            android:layout_y="18dp"
             android:text="TextView" />
     </AbsoluteLayout>
 
