@@ -45,6 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
     private void signUp(String userName, String password, String name, String age) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("username", userName);

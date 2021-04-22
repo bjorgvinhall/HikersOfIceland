@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
 
@@ -52,6 +54,24 @@ public class MainActivity extends AppCompatActivity{
         });
 
         lv.setAdapter(listAdapter);
+
+        // profile
+        Intent intent = getIntent();
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
+
+        Log.d(TAG, "onCreate: "+selectedProfile.getName());
+
+        ImageButton iBtn = (ImageButton) findViewById(R.id.profile_image_button);
+
+        iBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("profile", selectedProfile);
+                startActivity(intent);
+            }
+        });
     }
 
     private class ListAdapter extends BaseAdapter {
@@ -107,7 +127,6 @@ public class MainActivity extends AppCompatActivity{
             });
             return itemView;
         }
-
 
     }
 }

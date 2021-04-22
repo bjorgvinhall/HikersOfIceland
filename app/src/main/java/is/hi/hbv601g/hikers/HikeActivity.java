@@ -53,10 +53,9 @@ public class HikeActivity extends AppCompatActivity {
                 intent = new Intent(HikeActivity.this, ReviewActivity.class);
                 intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
                 startActivity(intent);
-
             }
-
         });
+
         Button btn2 = (Button) findViewById(R.id.achievButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +64,6 @@ public class HikeActivity extends AppCompatActivity {
                 intent = new Intent(HikeActivity.this, AchievementActivity.class);
                 intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
                 startActivity(intent);
-
             }
         });
         Button btn3 = (Button) findViewById(R.id.itemButton);
