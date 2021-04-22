@@ -68,7 +68,7 @@ public class EditProfileActivity extends AppCompatActivity {
         jsonObject.put("age", age);
 
         Service service = new Service(this);
-        service.postProfile(jsonObject, new NetworkCallback<Profile>() {
+        service.patchProfile(jsonObject, new NetworkCallback<Profile>() {
             @Override
             public void onSuccess(Profile result) {
                 Intent intent;
