@@ -19,6 +19,7 @@ import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Achievement;
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Entities.Review;
 
 public class AchievementActivity extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class AchievementActivity extends AppCompatActivity {
         // Get the selected hike
         Intent intent = getIntent();
         Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
-
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         // Makes a list of achievements from the selected hike
         List<Achievement> achievs = new ArrayList<>();

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
@@ -43,7 +44,11 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         ArrayList<Hike> hikes = new ArrayList<>();
         ListView lv = (ListView) findViewById(R.id.main_listview);
-        ListAdapter listAdapter = new ListAdapter(this, hikes);
+        Intent intent = getIntent();
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
+        ListAdapter listAdapter = new ListAdapter(this, hikes,selectedProfile);
+
+
 
         Service service = new Service(this);
         service.getHikes(new NetworkCallback<List<Hike>>() {
@@ -85,11 +90,13 @@ public class MainActivity extends AppCompatActivity{
     private class ListAdapter extends BaseAdapter {
         Activity context;
         List<Hike> hikes;
+        Profile selectedProfile;
         private LayoutInflater inflater = null;
 
-        public ListAdapter(Activity context, List<Hike> hikes) {
+        public ListAdapter(Activity context, List<Hike> hikes, Profile selectedProfile) {
             this.context = context;
             this.hikes = hikes;
+            this.selectedProfile = selectedProfile;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
@@ -174,6 +181,7 @@ public class MainActivity extends AppCompatActivity{
                     Intent intent;
                     intent = new Intent(MainActivity.this, HikeActivity.class);
                     intent.putExtra("selectedHike", selectedHike); // Pass the selected hike to next Activity
+                    intent.putExtra("profile", selectedProfile); // Pass the selected hike to next Activity
                     startActivity(intent);
 
                 }

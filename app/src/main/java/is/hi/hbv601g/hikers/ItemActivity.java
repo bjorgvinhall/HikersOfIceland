@@ -24,6 +24,7 @@ package is.hi.hbv601g.hikers;
 
         import is.hi.hbv601g.hikers.Entities.Hike;
         import is.hi.hbv601g.hikers.Entities.Item;
+        import is.hi.hbv601g.hikers.Entities.Profile;
 
 public class ItemActivity extends AppCompatActivity {
     private static final String TAG = "ItemActivity";
@@ -36,6 +37,7 @@ public class ItemActivity extends AppCompatActivity {
         // Get the selected hike
         Intent intent = getIntent();
         Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         List<Item> items = new ArrayList<>();
         items = hike.getItems();
