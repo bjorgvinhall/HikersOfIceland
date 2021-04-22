@@ -38,11 +38,14 @@ public class MainActivity extends AppCompatActivity{
         ListView lv = (ListView) findViewById(R.id.main_listview);
         ListAdapter listAdapter = new ListAdapter(this, hikes);
 
-        Button searchButton = findViewById(R.id.searchButton);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        Button filterButton = findViewById(R.id.filterButton);
+        filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search();
+                Intent intent;
+                intent = new Intent(MainActivity.this, FilterActivity.class);
+                intent.putExtra("hikes", hikes); // Pass the selected hike to next Activity
+                startActivity(intent);
             }
         });
 
@@ -61,11 +64,6 @@ public class MainActivity extends AppCompatActivity{
         });
 
         lv.setAdapter(listAdapter);
-    }
-
-    private void search() {
-        // TODO
-        Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
     }
 
     private class ListAdapter extends BaseAdapter {
