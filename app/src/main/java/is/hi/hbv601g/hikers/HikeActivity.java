@@ -35,6 +35,8 @@ import is.hi.hbv601g.hikers.Networking.Service;
 
 public class HikeActivity extends AppCompatActivity {
     private static final String TAG = "HikeActivity";
+    private static Hike hike;
+    Service service = new Service(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class HikeActivity extends AppCompatActivity {
 
         // Get the selected hike and profile
         Intent intent = getIntent();
-        Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
+        hike = (Hike) intent.getSerializableExtra("selectedHike");
         Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         // Update view
@@ -97,6 +99,23 @@ public class HikeActivity extends AppCompatActivity {
                 intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
 
+            }
+        });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // update the data
+        service.getHikeById(hike.getId(), new NetworkCallback<Hike>() {
+            @Override
+            public void onSuccess(Hike result) {
+                hike = result;
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

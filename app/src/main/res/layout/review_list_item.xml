@@ -14,17 +14,17 @@
             android:id="@+id/reviewListRating"
             android:layout_width="117dp"
             android:layout_height="21dp"
-            android:layout_x="7dp"
+            android:layout_x="3dp"
             android:layout_y="48dp"
             android:src="@mipmap/ic_launcher" />
 
         <Button
             android:id="@+id/reviewlist_button"
-            android:layout_width="101dp"
+            android:layout_width="wrap_content"
             android:layout_height="46dp"
-            android:layout_x="7dp"
-            android:layout_y="155dp"
-            android:text="Delete"
+            android:layout_x="253dp"
+            android:layout_y="9dp"
+            android:text="Eyða umsögn"
             app:backgroundTint="#8A8A8A" />
 
         <TextView
@@ -37,8 +37,8 @@
 
         <TextView
             android:id="@+id/reviewlist_desc"
-            android:layout_width="323dp"
-            android:layout_height="83dp"
+            android:layout_width="396dp"
+            android:layout_height="wrap_content"
             android:layout_x="7dp"
             android:layout_y="69dp"
             android:text="Review text"

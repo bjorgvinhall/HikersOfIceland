@@ -45,6 +45,22 @@ public class Service {
         });
     }
 
+    public void getHikeById(long id, NetworkCallback<Hike> callback) {
+        mRequestHelper.get(BASEURL + "hikes/" + id, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Hike hike = gson.fromJson(result, Hike.class);
+                callback.onSuccess(hike);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
     public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback) {
         mRequestHelper.post(BASEURL + "login", requestBody, new NetworkCallback<String>() {
             @Override
@@ -92,13 +108,13 @@ public class Service {
         });
     }
 
-    public void postReview(JSONObject requestBody, long selectedHike, NetworkCallback<Review> callback) {
+    public void postReview(JSONObject requestBody, long selectedHike, NetworkCallback<Hike> callback) {
         mRequestHelper.post(BASEURL + "hikes/" + selectedHike + "/reviews" , requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();
-                Review review = gson.fromJson(result, Review.class);
-                callback.onSuccess(review);
+                Hike hike = gson.fromJson(result, Hike.class);
+                callback.onSuccess(hike);
             }
 
             @Override
