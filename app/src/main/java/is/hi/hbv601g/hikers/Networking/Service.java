@@ -95,8 +95,8 @@ public class Service {
         });
     }
 
-    public void postProfile(JSONObject requestBody, NetworkCallback<Profile> callback){
-        mRequestHelper.post(BASEURL + "profile", requestBody, new NetworkCallback<String>() {
+    public void patchProfile(JSONObject requestBody, NetworkCallback<Profile> callback){
+        mRequestHelper.patch(BASEURL + "profile", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();

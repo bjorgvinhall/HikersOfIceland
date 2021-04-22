@@ -47,17 +47,17 @@ public class EditProfileActivity extends AppCompatActivity {
 
         Button confirmChangesButton = findViewById(R.id.editprofile_confirm_button);
 
-//        confirmChangesButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                try {
-//                    editProfile(userName.toString() ,password.toString(), name.toString(), age.toString());
-//                }
-//                catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+        confirmChangesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    editProfile(userName.toString() ,password.toString(), name.toString(), age.toString());
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void editProfile(String username, String password, String name, String age) throws JSONException {

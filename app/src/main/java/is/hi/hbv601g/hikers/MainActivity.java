@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity{
         lv.setAdapter(listAdapter);
 
         // profile
-        Intent profileIntent = getIntent();
-        Profile selectedProfile = (Profile) profileIntent.getSerializableExtra("profile");
+//        Intent profileIntent = getIntent();
+//        Profile selectedProfile = (Profile) profileIntent.getSerializableExtra("profile");
 
         Log.d(TAG, "onCreate: "+selectedProfile.getName());
 
