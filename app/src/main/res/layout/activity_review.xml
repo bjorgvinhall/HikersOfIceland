@@ -10,22 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/hikeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_x="155dp"
-            android:layout_y="109dp"
-            android:text="TextView" />
-
         <Button
             android:id="@+id/addReviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="282dp"
-            android:layout_y="530dp"
+            android:layout_x="269dp"
+            android:layout_y="559dp"
             android:background="#8A8A8A"
             android:text="Add Review" />
+
+        <EditText
+            android:id="@+id/addReview"
+            android:layout_width="wrap_content"
+            android:layout_height="97dp"
+            android:layout_x="140dp"
+            android:layout_y="620dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:text="Write Review here" />
+
+        <TextView
+            android:id="@+id/hikeName"
+            android:layout_width="191dp"
+            android:layout_height="64dp"
+            android:layout_x="95dp"
+            android:layout_y="64dp"
+            android:text="TextView" />
 
         <ListView
             android:id="@+id/review_listview"
@@ -36,16 +47,6 @@
 
         </ListView>
 
-        <EditText
-            android:id="@+id/addReview"
-            android:layout_width="wrap_content"
-            android:layout_height="97dp"
-            android:layout_x="58dp"
-            android:layout_y="520dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:text="Write Review here" />
     </AbsoluteLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

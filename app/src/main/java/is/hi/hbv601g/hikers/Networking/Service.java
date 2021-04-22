@@ -31,7 +31,8 @@ public class Service {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();
-                Type listType = new TypeToken<List<Hike>>(){}.getType();
+                Type listType = new TypeToken<List<Hike>>() {
+                }.getType();
                 List<Hike> hikes = gson.fromJson(result, listType);
                 callback.onSuccess(hikes);
             }
@@ -43,7 +44,7 @@ public class Service {
         });
     }
 
-    public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback){
+    public void postLogin(JSONObject requestBody, NetworkCallback<Profile> callback) {
         mRequestHelper.post(BASEURL + "login", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -59,7 +60,7 @@ public class Service {
         });
     }
 
-    public void postSignup(JSONObject requestBody, NetworkCallback<Profile> callback){
+    public void postSignup(JSONObject requestBody, NetworkCallback<Profile> callback) {
         mRequestHelper.post(BASEURL + "signup", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -69,7 +70,24 @@ public class Service {
             }
 
             @Override
-            public void onFailure(String error) { callback.onFailure(error); }
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
+    public void deleteReview(String selectedHike, String selectedReview, NetworkCallback<String> callback) {
+        String url = BASEURL + "hikes/" + selectedHike + "/" + "reviews/" + selectedReview;
+        mRequestHelper.delete(url, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
         });
     }
 }
