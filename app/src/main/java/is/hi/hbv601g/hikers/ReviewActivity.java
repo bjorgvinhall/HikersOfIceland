@@ -4,19 +4,26 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,35 +45,49 @@ public class ReviewActivity extends AppCompatActivity {
         // Get the selected hike
         Intent intent = getIntent();
         Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
+
         Button addReviewButton = findViewById(R.id.addReviewButton);
         // Update view
         TextView hikeName = (TextView) findViewById(R.id.hikeName);
+
+        EditText newReview = findViewById(R.id.newReviewField);
+        RatingBar reviewRating = findViewById(R.id.reviewRating);
+        Editable newReviewText = newReview.getText();
+
+
         hikeName.setText(hike.getName());
         List<Review> reviews = new ArrayList<>();
         reviews = hike.getReviews();
 
         ListView lv = (ListView) findViewById(R.id.review_listview);
-        ReviewActivity.ListAdapter listAdapter = new ReviewActivity.ListAdapter(this, reviews, hike);
+        ReviewActivity.ListAdapter listAdapter = new ReviewActivity.ListAdapter(this, reviews, hike, selectedProfile);
 
         lv.setAdapter(listAdapter);
 
         addReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int newreviewRating = reviewRating.getProgress();
 
-                Toast.makeText(getApplicationContext(), "Not implemented", Toast.LENGTH_SHORT).show();
+                try {
+                    newReview(selectedProfile.getName(), newReviewText, newreviewRating, hike.getId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
-         });
+        });
     }
 
     private class ListAdapter extends BaseAdapter {
         Activity context;
         List<Review> reviews;
         Hike hike;
+        Profile selectedProfile;
         private LayoutInflater inflater = null;
 
-        public ListAdapter(Activity context, List<Review> reviews, Hike hike) {
+        public ListAdapter(Activity context, List<Review> reviews, Hike hike, Profile selectedProfile) {
             this.context = context;
             this.reviews = reviews;
             this.hike = hike;
@@ -74,6 +95,7 @@ public class ReviewActivity extends AppCompatActivity {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         }
+
         public void setData(List<Review> reviews) {
             this.reviews = reviews;
             notifyDataSetChanged();
@@ -100,30 +122,55 @@ public class ReviewActivity extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View itemView = convertView;
-            itemView = (itemView == null) ? inflater.inflate(R.layout.review_list_item, null): itemView;
+            itemView = (itemView == null) ? inflater.inflate(R.layout.review_list_item, null) : itemView;
             TextView reviewListDesc = (TextView) itemView.findViewById(R.id.reviewlist_desc);
-            TextView reviewListRating = (TextView) itemView.findViewById(R.id.reviewlist_rating);
+            TextView reviewListRating = (TextView) itemView.findViewById(R.id.reviewlist_user);
 
             Button btn = (Button) itemView.findViewById(R.id.reviewlist_button);
 
             Review selectedReview = reviews.get(position);
+            int drawableInt = 0;
+            int rating = selectedReview.getRating();
+
+            switch(rating){
+                case 1:
+                    drawableInt = R.drawable.star1;
+                    break;
+                case 2:
+                    drawableInt = R.drawable.star2;
+                    break;
+                case 3:
+                    drawableInt = R.drawable.star3;
+                    break;
+                case 4:
+                    drawableInt = R.drawable.star4;
+                    break;
+                case 5:
+                    drawableInt = R.drawable.star5;
+                    break;
+                default:
+                    drawableInt = R.drawable.star0;
+            }
+            ImageView imageRatingView = (ImageView) itemView.findViewById(R.id.reviewListRating);
+            imageRatingView.setImageResource(drawableInt);
+
             reviewListDesc.setText(selectedReview.getReviewText());
-            reviewListRating.setText(String.valueOf(selectedReview.getRating()));
+            reviewListRating.setText(selectedReview.getuserId());
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Service service = new Service(context);
-                    service.deleteReview( String.valueOf(hike.getId()), String.valueOf(selectedReview.getId()),new NetworkCallback<String>() {
+                    service.deleteReview(String.valueOf(hike.getId()), String.valueOf(selectedReview.getId()), new NetworkCallback<String>() {
                         @Override
                         public void onSuccess(String result) {
-                            Toast.makeText(getApplicationContext(),"Succesful",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Succesful", Toast.LENGTH_SHORT).show();
                             hike.getReviews().remove(selectedReview);
                             notifyDataSetChanged();
                         }
 
                         @Override
                         public void onFailure(String error) {
-                            Toast.makeText(getApplicationContext(), "Network error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, error);
                         }
 
@@ -134,5 +181,25 @@ public class ReviewActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void newReview(String userId, Editable newReviewText, Integer newReviewRating, long selectedHike) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("userId", userId);
+        jsonObject.put("reviewText", newReviewText);
+        jsonObject.put("rating",newReviewRating);
+
+        Service service = new Service(this);
+        service.postReview(jsonObject, selectedHike, new NetworkCallback<Review>() {
+            @Override
+            public void onSuccess(Review result) {
+                Toast.makeText(getApplicationContext(), "Succesful", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "onFailure: failed making a new review >>> " + error);
+            }
+        });
     }
 }

@@ -14,6 +14,7 @@ import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
 import is.hi.hbv601g.hikers.Entities.Profile;
+import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.R;
 
 public class Service {
@@ -90,4 +91,21 @@ public class Service {
             }
         });
     }
+
+    public void postReview(JSONObject requestBody, long selectedHike, NetworkCallback<Review> callback) {
+        mRequestHelper.post(BASEURL + "hikes/" + selectedHike + "/reviews" , requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Review review = gson.fromJson(result, Review.class);
+                callback.onSuccess(review);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
 }

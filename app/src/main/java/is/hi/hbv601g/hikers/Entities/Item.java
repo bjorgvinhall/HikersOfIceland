@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Item implements Serializable {
+public class    Item implements Serializable {
     @SerializedName("id")
     private long mId;
     @SerializedName("name")

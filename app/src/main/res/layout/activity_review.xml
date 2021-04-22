@@ -14,28 +14,17 @@
             android:id="@+id/addReviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="269dp"
-            android:layout_y="559dp"
+            android:layout_x="231dp"
+            android:layout_y="398dp"
             android:background="#8A8A8A"
             android:text="Add Review" />
-
-        <EditText
-            android:id="@+id/addReview"
-            android:layout_width="wrap_content"
-            android:layout_height="97dp"
-            android:layout_x="140dp"
-            android:layout_y="620dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:text="Write Review here" />
 
         <TextView
             android:id="@+id/hikeName"
             android:layout_width="191dp"
             android:layout_height="64dp"
-            android:layout_x="95dp"
-            android:layout_y="64dp"
+            android:layout_x="89dp"
+            android:layout_y="41dp"
             android:text="TextView" />
 
         <ListView
@@ -43,9 +32,30 @@
             android:layout_width="409dp"
             android:layout_height="278dp"
             android:layout_x="-1dp"
-            android:layout_y="168dp">
+            android:layout_y="108dp">
 
         </ListView>
+
+        <EditText
+            android:id="@+id/newReviewField"
+            android:layout_width="wrap_content"
+            android:layout_height="119dp"
+            android:layout_x="10dp"
+            android:layout_y="394dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <RatingBar
+            android:id="@+id/reviewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_x="13dp"
+            android:layout_y="520dp"
+            android:stepSize="1"
+            android:progressTint="#ffff8800"
+
+            />
 
     </AbsoluteLayout>
 
