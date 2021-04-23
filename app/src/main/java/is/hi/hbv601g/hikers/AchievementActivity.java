@@ -132,8 +132,15 @@ public class AchievementActivity extends AppCompatActivity {
 
             // Checkbox
             CheckBox checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
+            for (int i = 0; i < profile.getCompletedAchievements().size(); i++) {
+                if (profile.getCompletedAchievements().get(i).getId() == selectedAchiev.getId())
+                    checkBox.setChecked(true);
+            }
+//            if(selectedAchiev.getId() == )
+//            if(profile.getCompletedAchievements().contains(selectedAchiev)) {
+//                checkBox.setChecked(true);
+//            }
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     checkBox.setEnabled(false);
@@ -145,15 +152,17 @@ public class AchievementActivity extends AppCompatActivity {
 
                     }
 
-                    service.postAchievement(hike.getId(), selectedAchiev.getId(), requestBody, new NetworkCallback<String>() {
+                    service.postAchievement(hike.getId(), selectedAchiev.getId(), requestBody, new NetworkCallback<Profile>() {
                         @Override
-                        public void onSuccess(String string) {
+                        public void onSuccess(Profile newProfile) {
                             checkBox.setEnabled(true);
                             if (isChecked){
                                 Toast.makeText(getApplicationContext(), "Achievement completed!", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Achievement removed!", Toast.LENGTH_SHORT).show();
                             }
+                            profile = newProfile;
+                            notifyDataSetChanged();
                         }
 
                         @Override
