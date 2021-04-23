@@ -133,6 +133,8 @@ public class ReviewActivity extends AppCompatActivity {
             Button btn = (Button) itemView.findViewById(R.id.reviewlist_button);
             if(!selectedProfile.getName().equals(selectedReview.getuserId())) {
                 btn.setVisibility(View.INVISIBLE);
+            } else {
+                btn.setVisibility(View.VISIBLE);
             }
 
             int drawableInt = 0;

@@ -24,7 +24,7 @@
         <ListView
             android:id="@+id/review_listview"
             android:layout_width="394dp"
-            android:layout_height="430dp"
+            android:layout_height="425dp"
             android:layout_x="7dp"
             android:layout_y="178dp">
 

@@ -42,7 +42,7 @@
             android:layout_x="7dp"
             android:layout_y="69dp"
             android:text="Review text"
-            android:textSize="26dp" />
+            android:textSize="20dp" />
     </AbsoluteLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
