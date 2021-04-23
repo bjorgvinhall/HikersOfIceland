@@ -13,7 +13,7 @@ import is.hi.hbv601g.hikers.Entities.Profile;
 
 public class FilterActivity extends MainActivity {
 
-    CheckBox cbLow, cbHigh, cbNorth, cbSouth, cbEast, cbWest, cbRefur, cbSnjotittlingur, cbLupina,
+    CheckBox cbNorth, cbSouth, cbEast, cbWest, cbRefur, cbSnjotittlingur, cbLupina,
             cbBirki, cbBlaeosp, cbEinir, cbFjalldrapi, cbGlitros, cbGulvidir, cbBrekkuvidir, cbGrasvidir,
             cbMinnkur, cbHagamus, cbKind, cbHreindyr, cbKanina, cbBrunrotta, cbAlft, cbBjartmafur,
             cbBrandugla, cbFyll, cbGlokollur, cbHeidagaes;
@@ -23,8 +23,7 @@ public class FilterActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
-        cbLow = findViewById(R.id.checkBox_low);
-        cbHigh = findViewById(R.id.checkBox_high);
+
         cbNorth = findViewById(R.id.checkBox_north);
         cbSouth = findViewById(R.id.checkBox_south);
         cbEast = findViewById(R.id.checkBox_east);
@@ -68,12 +67,6 @@ public class FilterActivity extends MainActivity {
 
                 boolean smallList = false;
 
-                if (cbLow.isChecked()) {
-
-                }
-                if (cbHigh.isChecked()) {
-
-                }
                 if (cbNorth.isChecked()) {
                     if (smallList) {
                         filteredHikes2.addAll(filteredHikes);

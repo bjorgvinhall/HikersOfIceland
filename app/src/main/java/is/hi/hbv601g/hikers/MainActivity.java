@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-
+/*
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Click again to Log out", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Click again to go back out", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity{
             }
         }, 2000);
     }
-
+*/
 
     private class ListAdapter extends BaseAdapter {
         Activity context;
