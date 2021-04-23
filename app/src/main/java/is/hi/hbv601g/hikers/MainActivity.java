@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +67,24 @@ public class MainActivity extends AppCompatActivity{
         });
 
         lv.setAdapter(listAdapter);
+
+        // profile
+//        Intent profileIntent = getIntent();
+//        Profile selectedProfile = (Profile) profileIntent.getSerializableExtra("profile");
+
+        Log.d(TAG, "onCreate: "+selectedProfile.getName());
+
+        ImageButton iBtn = (ImageButton) findViewById(R.id.profile_image_button);
+
+        iBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("profile", selectedProfile);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -188,7 +208,6 @@ public class MainActivity extends AppCompatActivity{
             });
             return itemView;
         }
-
 
     }
 }
