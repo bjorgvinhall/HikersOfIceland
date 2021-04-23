@@ -5,8 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -20,7 +23,7 @@ import is.hi.hbv601g.hikers.R;
 public class Service {
     private static final String TAG = "Service";
 
-    private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
+    private static final String BASEURL = "http://10.0.2.2:8080/rest/";
     RequestHelper mRequestHelper;
 
     public Service(Context context) {
@@ -115,6 +118,20 @@ public class Service {
                 Gson gson = new Gson();
                 Hike hike = gson.fromJson(result, Hike.class);
                 callback.onSuccess(hike);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
+    public void postAchievement(long hikeId, long achievementId, JSONObject requestBody, NetworkCallback<String> callback) {
+        mRequestHelper.post(BASEURL + "hikes/" + hikeId + "/achievements/" + achievementId , requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                callback.onSuccess(result);
             }
 
             @Override

@@ -11,28 +11,56 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/achievlistdesc"
+            android:id="@+id/achievlistname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="15dp"
-            android:layout_y="48dp"
-            android:text="TextView" />
+            android:layout_x="94dp"
+            android:layout_y="8dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/achievlistdiff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="15dp"
-            android:layout_y="76dp"
+            android:layout_x="94dp"
+            android:layout_y="54dp"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/achievlistname"
+            android:id="@+id/achievlistdesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="16dp"
-            android:layout_y="18dp"
+            android:layout_x="94dp"
+            android:layout_y="31dp"
             android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/difficultyImage"
+            android:layout_width="84dp"
+            android:layout_height="77dp"
+            android:layout_x="4dp"
+            android:layout_y="6dp"
+            app:srcCompat="@drawable/difficulty1" />
+
+        <TextView
+            android:id="@+id/achiev_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="347dp"
+            android:layout_y="43dp"
+            android:text="Klára"
+            android:textSize="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="36dp"
+            android:layout_height="31dp"
+            android:layout_x="351dp"
+            android:layout_y="8dp"
+            android:scaleX="1.50"
+            android:scaleY="1.50"/>
     </AbsoluteLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
