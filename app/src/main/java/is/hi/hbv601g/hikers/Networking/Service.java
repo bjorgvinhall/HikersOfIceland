@@ -23,8 +23,8 @@ import is.hi.hbv601g.hikers.R;
 public class Service {
     private static final String TAG = "Service";
 
-//    private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
-    private static final String BASEURL = "http://10.0.2.2:8080/rest/";
+    private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
+//    private static final String BASEURL = "http://10.0.2.2:8080/rest/";
     RequestHelper mRequestHelper;
 
 
