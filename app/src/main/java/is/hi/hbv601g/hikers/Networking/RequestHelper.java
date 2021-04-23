@@ -56,7 +56,7 @@ public class RequestHelper {
         mQueue.add(request);
     }
 
-    // TODO implement POST,PATCH,DELETE methods
+
     public void post(String url, JSONObject requestBody, NetworkCallback<String> callback ){
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
@@ -75,10 +75,10 @@ public class RequestHelper {
         mQueue.add(request);
     }
 
-    // TODO implement POST,PATCH,DELETE methods
-    public void patch(String url, JSONObject requestBody, NetworkCallback<String> callback ){
+
+    public void patch(String url, JSONObject requestBody, NetworkCallback<String> callback){
         JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
+                Request.Method.PATCH, url, requestBody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 callback.onSuccess(response.toString());
