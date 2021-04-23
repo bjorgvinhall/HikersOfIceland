@@ -26,6 +26,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     boolean doubleBackToExitPressedOnce = false;
+    private static Profile selectedProfile;
+    Service service = new Service(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +52,9 @@ public class MainActivity extends AppCompatActivity{
         ArrayList<Hike> hikes = new ArrayList<>();
         ListView lv = (ListView) findViewById(R.id.main_listview);
         Intent intent = getIntent();
-        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
+        selectedProfile = (Profile) intent.getSerializableExtra("profile");
         ListAdapter listAdapter = new ListAdapter(this, hikes,selectedProfile);
 
-
-
-        Service service = new Service(this);
         service.getHikes(new NetworkCallback<List<Hike>>() {
             @Override
             public void onSuccess(List<Hike> result) {
@@ -83,6 +85,30 @@ public class MainActivity extends AppCompatActivity{
                 intent = new Intent(MainActivity.this, ProfileActivity.class);
                 intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // update the profile
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", selectedProfile.getUsername());
+            jsonObject.put("password", selectedProfile.getPassword());
+        } catch (JSONException e) { }
+
+        service.postLogin(jsonObject, new NetworkCallback<Profile>() {
+            @Override
+            public void onSuccess(Profile profile) {
+                selectedProfile = profile;
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }
