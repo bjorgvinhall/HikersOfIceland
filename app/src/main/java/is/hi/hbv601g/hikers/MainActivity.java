@@ -27,6 +27,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     boolean doubleBackToExitPressedOnce = false;
+    private static Profile selectedProfile;
+    Service service = new Service(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +54,12 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = getIntent();
         ListView lv;
         ListAdapter listAdapter;
-        Profile selectedProfile;
+        selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         if (intent.getSerializableExtra("filteredHikes") != null) {
 
             hikes = (ArrayList<Hike>) intent.getSerializableExtra("filteredHikes");
             lv = (ListView) findViewById(R.id.main_listview);
-            selectedProfile = (Profile) intent.getSerializableExtra("profile");
             listAdapter = new ListAdapter(this, hikes,selectedProfile);
             List<Hike> trails = hikes;
             listAdapter.setData(trails);
@@ -64,7 +68,6 @@ public class MainActivity extends AppCompatActivity{
 
             hikes = new ArrayList<>();
             lv = (ListView) findViewById(R.id.main_listview);
-            selectedProfile = (Profile) intent.getSerializableExtra("profile");
             listAdapter = new ListAdapter(this, hikes,selectedProfile);
 
             Service service = new Service(this);
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity{
 
                 @Override
                 public void onFailure(String error) {
-                    Log.e(TAG, "Request failed: "  + error);
+                    Log.e(TAG, "Request failed: " + error);
                     Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity{
                 Intent intent;
                 intent = new Intent(MainActivity.this, FilterActivity.class);
                 intent.putExtra("hikes", hikes); // Pass the selected hike to next Activity
+                intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
+
                 startActivity(intent);
             }
         });
@@ -112,6 +117,34 @@ public class MainActivity extends AppCompatActivity{
                 intent = new Intent(MainActivity.this, ProfileActivity.class);
                 intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        if(selectedProfile == null){
+            super.onResume();
+            return;
+        }
+        super.onResume();
+        // update the profile
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", selectedProfile.getUsername());
+            jsonObject.put("password", selectedProfile.getPassword());
+        } catch (JSONException e) { }
+
+        service.postLogin(jsonObject, new NetworkCallback<Profile>() {
+            @Override
+            public void onSuccess(Profile profile) {
+                selectedProfile = profile;
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +37,12 @@ import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
+import okhttp3.RequestBody;
 
 public class HikeActivity extends AppCompatActivity {
     private static final String TAG = "HikeActivity";
     private static Hike hike;
+    private static Profile selectedProfile;
     Service service = new Service(this);
 
     @Override
@@ -51,7 +56,7 @@ public class HikeActivity extends AppCompatActivity {
         // Get the selected hike and profile
         Intent intent = getIntent();
         hike = (Hike) intent.getSerializableExtra("selectedHike");
-        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
+        selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         // Update view
         hikeName.setText(hike.getName());
@@ -110,6 +115,24 @@ public class HikeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Hike result) {
                 hike = result;
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+            }
+        });
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", selectedProfile.getUsername());
+            jsonObject.put("password", selectedProfile.getPassword());
+        } catch (JSONException e) { }
+
+        service.postLogin(jsonObject, new NetworkCallback<Profile>() {
+            @Override
+            public void onSuccess(Profile profile) {
+                selectedProfile = profile;
             }
 
             @Override

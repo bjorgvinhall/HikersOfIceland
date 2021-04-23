@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import java.util.ArrayList;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Profile;
 
 public class FilterActivity extends MainActivity {
 
@@ -57,6 +58,7 @@ public class FilterActivity extends MainActivity {
         // Get hikes
         Intent intent = getIntent();
         ArrayList<Hike> hikes = (ArrayList<Hike>) intent.getSerializableExtra("hikes");
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -346,8 +348,11 @@ public class FilterActivity extends MainActivity {
                 Intent intent = new Intent(FilterActivity.this, MainActivity.class);
                 if (filteredHikes.size() != 0) {
                     intent.putExtra("filteredHikes", filteredHikes); // Pass the filtered hikes to MainActivity
+                    intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
+
                 } else {
                     intent.putExtra("filteredHikes", hikes); // Pass the filtered hikes to MainActivity
+                    intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
 
                 }
                 startActivity(intent);

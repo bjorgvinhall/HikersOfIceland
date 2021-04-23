@@ -5,8 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -22,7 +25,7 @@ public class Service {
     private static final String TAG = "Service";
 
     private static final String BASEURL = "https://hikers-of-iceland.herokuapp.com/rest/";
-//    private static final String BASEURL = "http://10.0.2.2:8000/rest/";
+//    private static final String BASEURL = "http://10.0.2.2:8080/rest/";
     RequestHelper mRequestHelper;
 
 
@@ -101,15 +104,20 @@ public class Service {
         mRequestHelper.patch(BASEURL + "profile", requestBody, new NetworkCallback<String>() {
             @Override
             public void onSuccess(String result) {
+                Log.d(TAG, "onSuccess: "+ requestBody);
                 Gson gson = new Gson();
                 Profile profile = gson.fromJson(result, Profile.class);
                 callback.onSuccess(profile);
             }
 
             @Override
-            public void onFailure(String error) { callback.onFailure(error); }
+            public void onFailure(String error) {
+                Log.d(TAG, "onFailure: "+ requestBody);
+                callback.onFailure(error);
+            }
         });
     }
+
     public void deleteReview(String selectedHike, String selectedReview, NetworkCallback<String> callback) {
         String url = BASEURL + "hikes/" + selectedHike + "/" + "reviews/" + selectedReview;
         mRequestHelper.delete(url, new NetworkCallback<String>() {
@@ -140,4 +148,21 @@ public class Service {
             }
         });
     }
+
+    public void postAchievement(long hikeId, long achievementId, JSONObject requestBody, NetworkCallback<Profile> callback) {
+        mRequestHelper.post(BASEURL + "hikes/" + hikeId + "/achievements/" + achievementId , requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                Profile profile = gson.fromJson(result, Profile.class);
+                callback.onSuccess(profile);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
 }
