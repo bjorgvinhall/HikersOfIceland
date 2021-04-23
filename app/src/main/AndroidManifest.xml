@@ -23,12 +23,13 @@
         <!--    Other Activities    -->
         <activity android:name=".MainActivity" />
         <activity android:name=".HikeActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".ReviewActivity" />
         <activity android:name=".AchievementActivity" />
         <activity android:name=".ItemActivity" />
-        <activity android:name=".SignUpActivity" />
         <activity android:name=".FilterActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".EditProfileActivity" />
 
     </application>
-
 </manifest>

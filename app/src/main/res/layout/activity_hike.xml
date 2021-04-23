@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/hike_desc"
             android:layout_width="match_parent"
-            android:layout_height="313dp"
+            android:layout_height="304dp"
             android:layout_marginHorizontal="10dp"
             android:scrollbars="vertical"
             android:text="Description"
@@ -40,26 +40,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:orientation="horizontal">
+            android:layout_height="62dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="2dp">
 
             <Button
                 android:id="@+id/itemButton"
                 android:layout_width="134dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Umhverfi" />
 
             <Button
                 android:id="@+id/achievButton"
                 android:layout_width="135dp"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:layout_marginHorizontal="5dp"
                 android:text="Afrek" />
 
             <Button
                 android:id="@+id/reviewButton"
                 android:layout_width="136dp"
-                android:layout_height="wrap_content"
+                android:layout_height="62dp"
                 android:text="Umsagnir" />
         </LinearLayout>
 

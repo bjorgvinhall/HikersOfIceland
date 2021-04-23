@@ -8,44 +8,59 @@
 
     <AbsoluteLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="-16dp">
+
+<!--        <TextView-->
+<!--            android:id="@+id/hikeName"-->
+<!--            android:layout_width="411dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_x="5dp"-->
+<!--            android:layout_y="8dp"-->
+<!--            android:text="Umsagnir"-->
+<!--            android:textSize="22dp" />-->
+
+        <ListView
+            android:id="@+id/review_listview"
+            android:layout_width="394dp"
+            android:layout_height="430dp"
+            android:layout_x="7dp"
+            android:layout_y="178dp">
+
+        </ListView>
+
+        <EditText
+            android:id="@+id/newReviewField"
+            android:layout_width="394dp"
+            android:layout_height="82dp"
+            android:layout_x="7dp"
+            android:layout_y="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Skrifaðu umsögn hér..."
+            android:inputType="textMultiLine" />
+
+        <RatingBar
+            android:id="@+id/reviewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_x="4dp"
+            android:layout_y="97dp"
+            android:progressTint="#ffff8800"
+            android:stepSize="1"
+
+            />
 
         <Button
             android:id="@+id/addReviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="269dp"
-            android:layout_y="559dp"
+            android:layout_x="249dp"
+            android:layout_y="96dp"
             android:background="#8A8A8A"
-            android:text="Add Review" />
+            android:text="Senda umsögn" />
 
-        <EditText
-            android:id="@+id/addReview"
-            android:layout_width="wrap_content"
-            android:layout_height="97dp"
-            android:layout_x="140dp"
-            android:layout_y="620dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:text="Write Review here" />
-
-        <TextView
-            android:id="@+id/hikeName"
-            android:layout_width="191dp"
-            android:layout_height="64dp"
-            android:layout_x="95dp"
-            android:layout_y="64dp"
-            android:text="TextView" />
-
-        <ListView
-            android:id="@+id/review_listview"
-            android:layout_width="409dp"
-            android:layout_height="278dp"
-            android:layout_x="-1dp"
-            android:layout_y="168dp">
-
-        </ListView>
 
     </AbsoluteLayout>
 

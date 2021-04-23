@@ -30,12 +30,15 @@ import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
 import is.hi.hbv601g.hikers.Entities.Item;
+import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
 
 public class HikeActivity extends AppCompatActivity {
     private static final String TAG = "HikeActivity";
+    private static Hike hike;
+    Service service = new Service(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,10 @@ public class HikeActivity extends AppCompatActivity {
         TextView hikeDesc = (TextView) findViewById(R.id.hike_desc);
         ImageView imageView = (ImageView) findViewById(R.id.hike_image);
 
-        // Get the selected hike
+        // Get the selected hike and profile
         Intent intent = getIntent();
-        Hike hike = (Hike) intent.getSerializableExtra("selectedHike");
+        hike = (Hike) intent.getSerializableExtra("selectedHike");
+        Profile selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         // Update view
         hikeName.setText(hike.getName());
@@ -69,11 +73,11 @@ public class HikeActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(HikeActivity.this, ReviewActivity.class);
                 intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
-
             }
-
         });
+
         Button btn2 = (Button) findViewById(R.id.achievButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +85,8 @@ public class HikeActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(HikeActivity.this, AchievementActivity.class);
                 intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
-
             }
         });
         Button btn3 = (Button) findViewById(R.id.itemButton);
@@ -92,8 +96,26 @@ public class HikeActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(HikeActivity.this, ItemActivity.class);
                 intent.putExtra("selectedHike", hike); // Pass the selected hike to next Activity
+                intent.putExtra("profile", selectedProfile);
                 startActivity(intent);
 
+            }
+        });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // update the data
+        service.getHikeById(hike.getId(), new NetworkCallback<Hike>() {
+            @Override
+            public void onSuccess(Hike result) {
+                hike = result;
+            }
+
+            @Override
+            public void onFailure(String error) {
+                Log.e(TAG, "Request failed: "  + error);
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

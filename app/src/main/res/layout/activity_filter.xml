@@ -55,8 +55,8 @@
             android:id="@+id/checkBox_east"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="17dp"
-            android:layout_y="199dp"
+            android:layout_x="5dp"
+            android:layout_y="90dp"
             android:text="Austurland" />
 
         <CheckBox
@@ -71,8 +71,8 @@
             android:id="@+id/textView_animals"
             android:layout_width="56dp"
             android:layout_height="37dp"
-            android:layout_x="45dp"
-            android:layout_y="295dp"
+            android:layout_x="36dp"
+            android:layout_y="206dp"
             android:text="Dýralíf" />
 
         <TextView
@@ -92,20 +92,20 @@
             android:text="Flóra" />
 
         <CheckBox
-            android:id="@+id/checkBox_loa"
+            android:id="@+id/checkBox_refur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_x="9dp"
             android:layout_y="337dp"
-            android:text="Lóa" />
+            android:text="Refur" />
 
         <CheckBox
-            android:id="@+id/checkBox_rjupa"
+            android:id="@+id/checkBox_snjotittlingur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_x="83dp"
             android:layout_y="343dp"
-            android:text="Rjúpa" />
+            android:text="Snjótittlingur" />
 
         <CheckBox
             android:id="@+id/checkBox_lupina"
@@ -180,20 +180,108 @@
             android:text="Grasvíðir/smjörlauf" />
 
         <CheckBox
-            android:id="@+id/checkBox_krummi"
+            android:id="@+id/checkBox_minnkur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_x="8dp"
             android:layout_y="391dp"
-            android:text="Krummi" />
+            android:text="Minnkur" />
 
         <Button
             android:id="@+id/button_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_x="143dp"
-            android:layout_y="670dp"
+            android:layout_x="17dp"
+            android:layout_y="586dp"
             android:text="Staðfesta" />
+
+        <CheckBox
+            android:id="@+id/checkBox_hagamus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="94dp"
+            android:layout_y="392dp"
+            android:text="Hagamús" />
+
+        <CheckBox
+            android:id="@+id/checkBox_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="2dp"
+            android:layout_y="440dp"
+            android:text="Kind" />
+
+        <CheckBox
+            android:id="@+id/checkBox_hreindyr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="69dp"
+            android:layout_y="443dp"
+            android:text="Hreindýr" />
+
+        <CheckBox
+            android:id="@+id/checkBox_kanina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="4dp"
+            android:layout_y="489dp"
+            android:text="Kanína" />
+
+        <CheckBox
+            android:id="@+id/checkBox_brunrotta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="81dp"
+            android:layout_y="494dp"
+            android:text="Brúnrotta" />
+
+        <CheckBox
+            android:id="@+id/checkBox_alft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="7dp"
+            android:layout_y="287dp"
+            android:text="Álft" />
+
+        <CheckBox
+            android:id="@+id/checkBox_bartmafur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="67dp"
+            android:layout_y="287dp"
+            android:text="Bjartmáfur" />
+
+        <CheckBox
+            android:id="@+id/checkBox_brandugla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="2dp"
+            android:layout_y="536dp"
+            android:text="Brandugla" />
+
+        <CheckBox
+            android:id="@+id/checkBox_fyll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="7dp"
+            android:layout_y="242dp"
+            android:text="Fýll" />
+
+        <CheckBox
+            android:id="@+id/checkBox_glokollur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="67dp"
+            android:layout_y="244dp"
+            android:text="Glókollur" />
+
+        <CheckBox
+            android:id="@+id/checkBox_heidagaes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="97dp"
+            android:layout_y="541dp"
+            android:text="Heiðagæs" />
 
     </AbsoluteLayout>
 

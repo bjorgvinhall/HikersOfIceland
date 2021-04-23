@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/labelUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
+            android:layout_x="35dp"
+            android:layout_y="91dp"
+            android:text="notendanafn:" />
+
+        <EditText
+            android:id="@+id/editprofile_username"
+            android:layout_width="332dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginBottom="568dp"
+            android:layout_x="35dp"
+            android:layout_y="110dp"
+            android:hint="@string/form_username"
+            android:inputType="text" />
+
+
+        <TextView
+            android:id="@+id/labelPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="40dp"
+            android:layout_x="35dp"
+            android:layout_y="180dp"
+            android:text="lykilorð:" />
+
+        <EditText
+            android:id="@+id/editprofile_password"
+            android:layout_width="332dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="40dp"
+            android:layout_x="35dp"
+            android:layout_y="200dp"
+            android:hint="@string/form_password"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+             />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="35dp"
+            android:layout_y="280dp"
+            android:text="fullt nafn:" />
+
+
+        <EditText
+            android:id="@+id/editprofile_name"
+            android:layout_width="332dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="40dp"
+            android:layout_x="35dp"
+            android:layout_y="300dp"
+            android:hint="@string/form_name"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+             />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="35dp"
+            android:layout_y="380dp"
+            android:text="aldur:" />
+
+        <EditText
+            android:id="@+id/editprofile_age"
+            android:layout_width="332dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="40dp"
+            android:layout_x="35dp"
+            android:layout_y="400dp"
+            android:hint="@string/form_age"
+            android:inputType="text"
+            android:selectAllOnFocus="true" />
+
+        <Button
+            android:id="@+id/editprofile_confirm_button"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:layout_x="197dp"
+            android:layout_y="483dp"
+            android:text="Staðfesta" />
+
+
+    </AbsoluteLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

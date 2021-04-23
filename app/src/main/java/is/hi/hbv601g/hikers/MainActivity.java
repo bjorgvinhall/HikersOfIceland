@@ -18,7 +18,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.hbv601g.hikers.Entities.Hike;
+import is.hi.hbv601g.hikers.Entities.Profile;
 import is.hi.hbv601g.hikers.Entities.Review;
 import is.hi.hbv601g.hikers.Networking.NetworkCallback;
 import is.hi.hbv601g.hikers.Networking.Service;
@@ -43,15 +46,44 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayList<Hike> hikes;
-        if (getIntent() != null) {
-            Intent intent = getIntent();
-            hikes = (ArrayList<Hike>) intent.getSerializableExtra("hikes");
+        Intent intent = getIntent();
+        ListView lv;
+        ListAdapter listAdapter;
+        Profile selectedProfile;
+
+        if (intent.getSerializableExtra("filteredHikes") != null) {
+
+            hikes = (ArrayList<Hike>) intent.getSerializableExtra("filteredHikes");
+            lv = (ListView) findViewById(R.id.main_listview);
+            selectedProfile = (Profile) intent.getSerializableExtra("profile");
+            listAdapter = new ListAdapter(this, hikes,selectedProfile);
+            List<Hike> trails = hikes;
+            listAdapter.setData(trails);
 
         } else {
+
             hikes = new ArrayList<>();
+            lv = (ListView) findViewById(R.id.main_listview);
+            selectedProfile = (Profile) intent.getSerializableExtra("profile");
+            listAdapter = new ListAdapter(this, hikes,selectedProfile);
+
+            Service service = new Service(this);
+            service.getHikes(new NetworkCallback<List<Hike>>() {
+                @Override
+                public void onSuccess(List<Hike> result) {
+                    listAdapter.setData(result);
+                    hikes.addAll(result);
+                }
+
+                @Override
+                public void onFailure(String error) {
+                    Log.e(TAG, "Request failed: "  + error);
+                    Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-        ListView lv = (ListView) findViewById(R.id.main_listview);
-        ListAdapter listAdapter = new ListAdapter(this, hikes);
+
+        lv.setAdapter(listAdapter);
 
         Button filterButton = findViewById(R.id.filterButton);
         filterButton.setOnClickListener(new View.OnClickListener() {
@@ -64,21 +96,24 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        Service service = new Service(this);
-        service.getHikes(new NetworkCallback<List<Hike>>() {
-            @Override
-            public void onSuccess(List<Hike> result) {
-                listAdapter.setData(result);
-            }
+        /* profile
+        Intent profileIntent = getIntent();
+        final Profile selectedProfiler = (Profile) profileIntent.getSerializableExtra("profile");
 
+        Log.d(TAG, "onCreate: "+selectedProfile.getName());
+        */
+        ImageButton iBtn = (ImageButton) findViewById(R.id.profile_image_button);
+
+        iBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(String error) {
-                Log.e(TAG, "Request failed: "  + error);
-                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+
+                Intent intent;
+                intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("profile", selectedProfile);
+                startActivity(intent);
             }
         });
-
-        lv.setAdapter(listAdapter);
     }
 
 
@@ -104,11 +139,13 @@ public class MainActivity extends AppCompatActivity{
     private class ListAdapter extends BaseAdapter {
         Activity context;
         List<Hike> hikes;
+        Profile selectedProfile;
         private LayoutInflater inflater = null;
 
-        public ListAdapter(Activity context, List<Hike> hikes) {
+        public ListAdapter(Activity context, List<Hike> hikes, Profile selectedProfile) {
             this.context = context;
             this.hikes = hikes;
+            this.selectedProfile = selectedProfile;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
@@ -193,15 +230,13 @@ public class MainActivity extends AppCompatActivity{
                     Intent intent;
                     intent = new Intent(MainActivity.this, HikeActivity.class);
                     intent.putExtra("selectedHike", selectedHike); // Pass the selected hike to next Activity
+                    intent.putExtra("profile", selectedProfile); // Pass the selected hike to next Activity
                     startActivity(intent);
 
                 }
             });
             return itemView;
         }
-
-
-
 
     }
 }

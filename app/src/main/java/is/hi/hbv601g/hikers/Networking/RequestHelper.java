@@ -75,6 +75,25 @@ public class RequestHelper {
         mQueue.add(request);
     }
 
+    // TODO implement POST,PATCH,DELETE methods
+    public void patch(String url, JSONObject requestBody, NetworkCallback<String> callback ){
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST, url, requestBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                callback.onSuccess(response.toString());
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        }
+        );
+        mQueue.add(request);
+    }
+
     public void delete(String url, NetworkCallback<String> callback){
         StringRequest request = new StringRequest(
                 Request.Method.DELETE, url, new Response.Listener<String>() {
