@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,13 +31,23 @@ public class ProfileActivity extends AppCompatActivity {
         profileUsernameText.setText(selectedProfile.getUsername());
         profileAgeText.setText(String.valueOf(selectedProfile.getAge()));
 
-        Button btn = (Button) findViewById(R.id.edit_profile);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button changeProfileButton = (Button) findViewById(R.id.edit_profile);
+        changeProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
                 intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
                 intent.putExtra("profile", selectedProfile);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton logOutButton = (ImageButton) findViewById(R.id.log_out_button);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

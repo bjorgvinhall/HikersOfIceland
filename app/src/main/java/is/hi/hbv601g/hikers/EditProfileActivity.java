@@ -51,7 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    editProfile(userName.toString() ,password.toString(), name.toString(), age.toString());
+                    editProfile(userName.toString(), password.toString(), name.toString(), age.toString());
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -82,8 +82,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure: did not work to edit profile >>> " + error);
             }
         });
-
-
     }
 }
 
