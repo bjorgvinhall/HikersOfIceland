@@ -5,8 +5,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -143,4 +146,19 @@ public class Service {
             }
         });
     }
+
+    public void postAchievement(long hikeId, long achievementId, JSONObject requestBody, NetworkCallback<String> callback) {
+        mRequestHelper.post(BASEURL + "hikes/" + hikeId + "/achievements/" + achievementId , requestBody, new NetworkCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
 }
