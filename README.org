@@ -1,5 +1,6 @@
 * Hugbúnaðarverkefni 2
 * Hikers of Iceland
+#+html: <p align="center"><img src="https://github.com/bjorgvinhall/HikersOfIceland/blob/d496a6fe6c9d3a90156cd67256073c7f46482c5c/hikersOfIceland.png" /></p>
 
 *** Group 1
 - Almar Teitsson, alt15@hi.is
@@ -18,6 +19,8 @@ The app was developed using a Nexus 5X (API 28) Android Emulator.
 ** Project info
 *** Backend
 The backend is hosted on Heroku (https://hikers-of-iceland.herokuapp.com/rest/hikes)
+
+You can also find the source code on github (https://github.com/KristinnGodfrey/HikersIceland)
 
 *** Admin testing account 
 We have created a user that can be used for assignment reviewers, but they may aswell create a new one.
