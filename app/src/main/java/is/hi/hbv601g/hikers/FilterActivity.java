@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -338,16 +339,14 @@ public class FilterActivity extends MainActivity {
                     }
                 }
 
-                Intent intent = new Intent(FilterActivity.this, MainActivity.class);
-                if (filteredHikes.size() != 0) {
-                    intent.putExtra("filteredHikes", filteredHikes); // Pass the filtered hikes to MainActivity
-                    intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
-
-                } else {
-                    intent.putExtra("filteredHikes", hikes); // Pass the filtered hikes to MainActivity
-                    intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
-
+                if (filteredHikes.size() == 0) {
+                    Toast.makeText(FilterActivity.this, "No hikes match the filter...", Toast.LENGTH_SHORT).show();
                 }
+
+                Intent intent = new Intent(FilterActivity.this, MainActivity.class);
+                intent.putExtra("filteredHikes", filteredHikes); // Pass the filtered hikes to MainActivity
+                intent.putExtra("profile", selectedProfile); // Pass the selected profile to next Activity
+
                 startActivity(intent);
             }
 

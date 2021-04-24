@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity{
     boolean doubleBackToExitPressedOnce = false;
     private static Profile selectedProfile;
     Service service = new Service(this);
+    boolean isFiltered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
         selectedProfile = (Profile) intent.getSerializableExtra("profile");
 
         if (intent.getSerializableExtra("filteredHikes") != null) {
-
+            isFiltered = true;
             hikes = (ArrayList<Hike>) intent.getSerializableExtra("filteredHikes");
             lv = (ListView) findViewById(R.id.main_listview);
             listAdapter = new ListAdapter(this, hikes,selectedProfile);
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity{
             listAdapter.setData(trails);
 
         } else {
-
+            isFiltered = false;
             hikes = new ArrayList<>();
             lv = (ListView) findViewById(R.id.main_listview);
             listAdapter = new ListAdapter(this, hikes,selectedProfile);
@@ -92,6 +94,11 @@ public class MainActivity extends AppCompatActivity{
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isFiltered) {
+                    // Go back to last filter
+                    onBackPressed();
+                    return;
+                }
                 Intent intent;
                 intent = new Intent(MainActivity.this, FilterActivity.class);
                 intent.putExtra("hikes", hikes); // Pass the selected hike to next Activity
@@ -128,6 +135,7 @@ public class MainActivity extends AppCompatActivity{
             return;
         }
         super.onResume();
+//        isFiltered = getIntent().getBooleanExtra("isFiltered", false);
         // update the profile
         JSONObject jsonObject = new JSONObject();
         try {
@@ -152,13 +160,23 @@ public class MainActivity extends AppCompatActivity{
 /*
     @Override
     public void onBackPressed() {
+        ActivityManager mngr = (ActivityManager) getSystemService( ACTIVITY_SERVICE );
+
+        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+
+        Toast.makeText(this, "Last: " + taskList.get(0).topActivity.getClassName(), Toast.LENGTH_SHORT).show();
+
+        if(taskList.get(0).numActivities == 1 &&
+                taskList.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
+        }
+
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
             return;
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Click again to go back out", Toast.LENGTH_SHORT).show();
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
