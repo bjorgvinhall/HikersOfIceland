@@ -1,5 +1,24 @@
-* HikersOfIceland
+* Hikers of Iceland
 
-** login info:
+*** Hópur 22
+- Almar Teitsson, alt15@hi.is
+- Björgvin Hall, bjh45@hi.is
+- Friðrik Hreinn Sigurðsson, fhs6@hi.is
+- Kristinn Godfrey Guðnason, kgg16@hi.is
+
+** How to run the program
+The app was developed using the Nexus 5X (API 28) Android Emulator. We have not tested the app on different phones with different screen sizes.
+*** Setup
+- Clone this repository into your local machine
+- In your IDE select HikersicelandApplication as your main class
+- Download dependencies via Gradle sync and build the application
+- Run the application on your Android Emulator (we recommend the Nexus 5X)
+
+** Project info
+*** Backend
+The backend is hosted on Heroku (https://hikers-of-iceland.herokuapp.com/rest/hikes)
+
+*** Admin testing account 
+We have created a user that can be used for assignment reviewers, but they may aswell create a new one.
 - user: hikeadmin
-- password: admin
+- pass: admin
