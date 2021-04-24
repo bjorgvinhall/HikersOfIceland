@@ -355,14 +355,14 @@ public class FilterActivity extends MainActivity {
                 if (smallist) {
                     for(int i = 0; i < filteredHikes.size(); i++) {
                         Hike hike = filteredHikes.get(i);
-                        if (hike.getLocation().equals(s)) {
+                        if (hike.getLocation().equalsIgnoreCase(s)) {
                             filteredList.add(hike);
                         }
                     }
                 } else {
                     for(int i = 0; i < hikes.size(); i++) {
                         Hike hike = hikes.get(i);
-                        if (hike.getLocation().equals(s)) {
+                        if (hike.getLocation().equalsIgnoreCase(s)) {
                             if (!filteredHikes.contains(hike)) {
                                 filteredList.add(hike);
                             }
@@ -379,7 +379,7 @@ public class FilterActivity extends MainActivity {
                     for(int i = 0; i < filteredHikes.size(); i++) {
                         Hike hike = filteredHikes.get(i);
                         for(int j=0; j < hike.getItems().size(); j++) {
-                            if (hike.getItems().get(j).getName().equals(s)) {
+                            if (hike.getItems().get(j).getName().equalsIgnoreCase(s)) {
                                 filteredList.add(hike);
                                 continue;
                             }
@@ -389,7 +389,7 @@ public class FilterActivity extends MainActivity {
                     for(int i = 0; i < hikes.size(); i++) {
                         Hike hike = hikes.get(i);
                         for(int j=0; j < hike.getItems().size(); j++) {
-                            if (hike.getItems().get(j).getName().equals(s)) {
+                            if (hike.getItems().get(j).getName().equalsIgnoreCase(s)) {
                                 if (!filteredHikes.contains(hike)) filteredList.add(hike);
                                 continue;
                             }

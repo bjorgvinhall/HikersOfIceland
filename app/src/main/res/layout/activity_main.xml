@@ -25,8 +25,8 @@
 
         <ImageButton
             android:id="@+id/profile_image_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="44dp"
             android:layout_x="347dp"
             android:layout_y="558dp"
             android:background="@color/profile_image_background"
