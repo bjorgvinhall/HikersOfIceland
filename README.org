@@ -1,13 +1,14 @@
+* Hugbúnaðarverkefni 2
 * Hikers of Iceland
 
-*** Hópur 22
+*** Group 1
 - Almar Teitsson, alt15@hi.is
 - Björgvin Hall, bjh45@hi.is
 - Friðrik Hreinn Sigurðsson, fhs6@hi.is
 - Kristinn Godfrey Guðnason, kgg16@hi.is
 
 ** How to run the program
-The app was developed using the Nexus 5X (API 28) Android Emulator. We have not tested the app on different phones with different screen sizes.
+The app was developed using a Nexus 5X (API 28) Android Emulator.
 *** Setup
 - Clone this repository into your local machine
 - In your IDE select HikersicelandApplication as your main class
